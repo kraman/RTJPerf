@@ -1,3 +1,31 @@
+Tue Feb 12 12:57:08 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* bin/runTest:
+	* src/edu/uci/ece/doc/rtjperf/asynch/timing/AsyncEventHandlerDispatchDelayTest.java:
+	* src/edu/uci/ece/doc/rtjperf/asynch/timing/DispatchDelayTestLauncher.java:
+	* src/edu/uci/ece/doc/rtjperf/asynch/timing/EventHandlerLogic.java:
+	* src/edu/uci/ece/doc/rtjperf/asynch/timing/Makefile
+
+	  Extended test to be more portable, and added makefile be able to
+	  compile the test with CCJ/
+	
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeXTest.java:
+
+	  Test for measuring the effect of dynamic class loading.
+	
+	* src/edu/uci/ece/doc/rtjperf/sys/HighResClock.h
+	* src/edu/uci/ece/doc/rtjperf/sys/HighResTime.h
+	* src/edu/uci/ece/doc/rtjperf/sys/HighResTime.java:
+	* src/edu/uci/ece/doc/rtjperf/sys/Makefile:
+	* src/edu/uci/ece/doc/rtjperf/sys/PerformanceReport.java:
+
+	  Misc enhancements
+	
+	* src/javax/realtime/ThreadedAsyncEventHandler.java:
+
+	  This method is added to make some test portable across different
+	  RTSJ Implementations.
+
 Tue Jan 15 16:21:24 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* script/runx.sh: Script that can be used to run N times a given

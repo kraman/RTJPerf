@@ -1,10 +1,11 @@
 /*-------------------------------------------------------------------------*
- * $Id: EventHandlerLogic.java,v 1.1 2002/01/09 03:15:21 corsaro Exp $
+ * $Id: EventHandlerLogic.java,v 1.2 2002/02/12 20:57:54 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.asynch.timing;
 
 // -- RTJPerf Import --
 import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
+import edu.uci.ece.doc.rtjperf.sys.HighResTime;
 import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
 
 // -- DOC Utils Import --
@@ -23,6 +24,7 @@ public class EventHandlerLogic implements Runnable {
     private HighResTimer timer;
     private EventVariable eventVar;
     private boolean memProfiling;
+    private HighResTime time = new HighResTime();
     
     static final String DISPATCH_DELAY = "DispatchDelay";
     
@@ -50,7 +52,10 @@ public class EventHandlerLogic implements Runnable {
         timer.stop();
         if (!this.memProfiling) 
             performanceReport.addMeasuredVariable(DISPATCH_DELAY, timer.getElapsedTime());
-        
+        else {
+            timer.getElapsedTime(time);
+            time.printTo(System.out);
+        }
         timer.reset();
         eventVar.signal();
     }

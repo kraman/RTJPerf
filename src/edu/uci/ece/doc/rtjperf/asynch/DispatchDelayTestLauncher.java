@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: DispatchDelayTestLauncher.java,v 1.2 2002/01/14 18:44:45 corsaro Exp $
+ * $Id: DispatchDelayTestLauncher.java,v 1.3 2002/02/12 20:57:54 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.asynch.timing;
 
@@ -29,6 +29,7 @@ import javax.realtime.RelativeTime;
 import javax.realtime.HeapMemory;
 import javax.realtime.AperiodicParameters;
 import javax.realtime.RealtimeThread;
+import javax.realtime.ThreadedAsyncEventHandler;
 
 // -- DOC Utils Import --
 import edu.uci.ece.doc.util.ArgParser;
@@ -142,13 +143,13 @@ public class DispatchDelayTestLauncher {
                                                              this.noHeap,
                                                              this.logic);
         else
-            this.eventHandler = new AsyncEventHandler(this.schedParams,
-                                                      this.releaseParams,
-                                                      this.memoryParams,
-                                                      this.memoryArea,
-                                                      this.procGroupParams,
-                                                      this.noHeap,
-                                                      this.logic);
+            this.eventHandler = new ThreadedAsyncEventHandler(this.schedParams,
+                                                              this.releaseParams,
+                                                              this.memoryParams,
+                                                              this.memoryArea,
+                                                              this.procGroupParams,
+                                                              this.noHeap,
+                                                              this.logic);
 
         int testThreadPriority;
         if (this.handlerPriority > PriorityScheduler.MIN_PRIORITY)
@@ -173,18 +174,16 @@ public class DispatchDelayTestLauncher {
     }
 
     public static void main(String[] args)  throws Exception {
-        
         final String[] fargs = args;
         ArgParser.setArgProperty(RTJPerfArgs.HELP_OPT + ".handler",
                                  "edu.uci.ece.doc.rtjperf.asynch.timing.TestHelpHandler");
         ArgParser argParser = new ArgParser(args);
         String memType = "heap";
-        
         CommandLineArgument cla = argParser.getCommandLineArgument(RTJPerfArgs.MEMORY_AREA_OPT);
-
+        
         if (cla != null && cla.getArgValueNum() >= 1)
             memType = cla.getValue();
-        
+
         final MemoryArea memoryArea = SingletonMemoryAreaAccessor.instance(memType);
         
         argParser = null;
@@ -193,6 +192,7 @@ public class DispatchDelayTestLauncher {
         // allocated during the test is allocated out of the type of
         // memory specified by the command line argument --memoryArea
         //        RealtimeThread rtThread = new RealtimeThread() {
+        System.out.println("5");
         final Runnable logic = new Runnable() {
                 public void run() {
                     try {
