@@ -1,3 +1,15 @@
+Mon Jan 14 10:47:11 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/util/Spinner.java:
+
+	  This class implements a runnable that simply spins CPU cycle. It
+	  is quite useful to implement low priority logic when testing the
+	  dispacth delay and so on.
+
+	* src/edu/uci/ece/doc/util/HelpHandler.java:
+
+	  This class takes care of managing the --help argument.
+
 Sat Jan 12 18:36:48 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* src/build.xml:
