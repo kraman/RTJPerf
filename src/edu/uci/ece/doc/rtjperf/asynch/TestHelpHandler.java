@@ -1,6 +1,31 @@
-package edu.uci.ece.doc.rtjperf.asynch.timing;
+// ************************************************************************
+//    $Id: TestHelpHandler.java,v 1.3 2002/04/16 19:12:52 corsaro Exp $
+// ************************************************************************
+//
+//                               RTJPerf
+//
+//               Copyright (C) 2001-2002 by Angelo Corsaro.
+//                         <corsaro@ece.uci.edu>
+//                          All Rights Reserved.
+//
+//   Permission to use, copy, modify, and distribute this software and
+//   its  documentation for any purpose is hereby  granted without fee,
+//   provided that the above copyright notice appear in all copies and
+//   that both that copyright notice and this permission notice appear
+//   in  supporting  documentation. I don't make  any  representations
+//   about the  suitability  of this  software for any  purpose. It is
+//   provided "as is" without express or implied warranty.
+//
+//
+//
+// *************************************************************************
+//  
+// *************************************************************************
+package edu.uci.ece.doc.rtjperf.asynch;
 
-import edu.uci.ece.doc.util.HelpHandler;
+// -- jTools Import --
+import edu.uci.ece.ac.jargo.HelpHandler;
+
 
 public class TestHelpHandler extends HelpHandler {
     
@@ -21,8 +46,6 @@ public class TestHelpHandler extends HelpHandler {
         
         "--memProfiling <profile-step> Sets the memory profile mode.\n\n" +
         
-        "--outDir <dir-path>      (*)  Sets directory under which the result of the\n" +
-        "                              test have to be saved.\n\n"  +
 
         "--outDir <dir-path>      (*)  Sets directory under which the result of the\n" +
         "                              test have to be saved.\n\n"  +
@@ -33,9 +56,7 @@ public class TestHelpHandler extends HelpHandler {
         "--lpAsyncHandlerPriority <p>  Sets the priority for the of secondary handler\n"+
         "                              that are registered before the main handler\n\n" ;
        
-    
-    public void handleHelp() {
-        System.out.println(msg);
-        System.exit(0);
+    public TestHelpHandler() {
+        super(msg);
     }
 }

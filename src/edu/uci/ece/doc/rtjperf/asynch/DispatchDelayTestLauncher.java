@@ -1,24 +1,39 @@
-/*-------------------------------------------------------------------------*
- * $Id: DispatchDelayTestLauncher.java,v 1.5 2002/03/19 07:14:47 corsaro Exp $
- *-------------------------------------------------------------------------*/
-package edu.uci.ece.doc.rtjperf.asynch.timing;
+// ************************************************************************
+//    $Id: DispatchDelayTestLauncher.java,v 1.6 2002/04/16 19:12:52 corsaro Exp $
+// ************************************************************************
+//
+//                               RTJPerf
+//
+//               Copyright (C) 2001-2002 by Angelo Corsaro.
+//                         <corsaro@ece.uci.edu>
+//                          All Rights Reserved.
+//
+//   Permission to use, copy, modify, and distribute this software and
+//   its  documentation for any purpose is hereby  granted without fee,
+//   provided that the above copyright notice appear in all copies and
+//   that both that copyright notice and this permission notice appear
+//   in  supporting  documentation. I don't make  any  representations
+//   about the  suitability  of this  software for any  purpose. It is
+//   provided "as is" without express or implied warranty.
+//
+//
+//
+// *************************************************************************
+//  
+// *************************************************************************
+package edu.uci.ece.doc.rtjperf.asynch;
 
-// -- DOC Util Import --
-import edu.uci.ece.doc.util.ArgParser;
-import edu.uci.ece.doc.util.CommandLineArgument;
-import edu.uci.ece.doc.util.MalformedCommandLineArgumentException;
-    
-// -- RTJPerf Import --
-import edu.uci.ece.doc.rtjperf.sys.PerformanceTestCase;
-import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
-import edu.uci.ece.doc.rtjperf.util.SingletonMemoryAreaAccessor;
-import edu.uci.ece.doc.rtjperf.util.RTJPerfArgs;
+// -- jTools Import --
+import edu.uci.ece.ac.jargo.*;
+import edu.uci.ece.ac.time.*;
+
+// -- RTJPerf Utils Import --
+import edu.uci.ece.doc.rtjperf.util.*;
 
 // -- RTJava Import --
 import javax.realtime.AsyncEventHandler;
 import javax.realtime.AsyncEvent;
 import javax.realtime.BoundAsyncEventHandler;
-import javax.realtime.PooledAsyncEventHandler;
 import javax.realtime.SchedulingParameters;
 import javax.realtime.ReleaseParameters;
 import javax.realtime.MemoryParameters;
@@ -34,13 +49,8 @@ import javax.realtime.RealtimeThread;
 import javax.realtime.ThreadedAsyncEventHandler;
 import javax.realtime.CTMemoryArea;
 import javax.realtime.ScopedMemory;
-import javax.realtime.util.PooledExecutor;
 
-// -- DOC Utils Import --
-import edu.uci.ece.doc.util.ArgParser;
-import edu.uci.ece.doc.util.CommandLineArgument;
-import edu.uci.ece.doc.util.MalformedCommandLineArgumentException;
-
+import edu.uci.ece.doc.rtjperf.sys.*;
 
 /**
  * This class takes care of acquiring and setting up all the
@@ -71,12 +81,8 @@ public class DispatchDelayTestLauncher {
     protected PerformanceTestCase testCase;
     
 
-    public DispatchDelayTestLauncher(final String[] args)
-        throws MalformedCommandLineArgumentException
-    {
-        int requiredArgs = RTJPerfArgs.FIRE_COUNT_OPT_CODE
-            | RTJPerfArgs.OUT_DIR_OPT_CODE;
-        this.argParser = new ArgParser(args, requiredArgs);
+    public DispatchDelayTestLauncher(final String[] args) throws Exception {
+        this.argParser = parseArgs(args);
         this.init();
     }
 
@@ -87,47 +93,47 @@ public class DispatchDelayTestLauncher {
     }
 
 
-    private void init() throws MalformedCommandLineArgumentException {
-        CommandLineArgument cla; 
+    private void init() throws Exception {
+        ArgValue cla; 
 
-        cla = argParser.getCommandLineArgument(RTJPerfArgs.OUT_DIR_OPT);
-        this.outDir = cla.getValue();
+        cla = argParser.getArg(RTJPerfArgs.OUT_DIR_OPT.getName());
+        this.outDir = (String)cla.getValue();
         
-        if (this.argParser.isCommandLineArgumentDefined(RTJPerfArgs.THREAD_BOUND_OPT))
+        if (this.argParser.isArgDefined(RTJPerfArgs.THREAD_BOUND_OPT.getName()))
             this.threadBound = true;
         else
             this.threadBound = false;
 
-        if (this.argParser.isCommandLineArgumentDefined(RTJPerfArgs.NO_HEAP_OPT))
+        if (this.argParser.isArgDefined(RTJPerfArgs.NO_HEAP_OPT.getName()))
             this.noHeap = true;
         else
             this.noHeap = false;
         
-        if (this.argParser.isCommandLineArgumentDefined(RTJPerfArgs.HANDLER_PRIORITY_OPT)) {
-            cla = this.argParser.getCommandLineArgument(RTJPerfArgs.HANDLER_PRIORITY_OPT);
-            this.handlerPriority = Integer.parseInt(cla.getValue());
+        if (this.argParser.isArgDefined(RTJPerfArgs.HANDLER_PRIORITY_OPT.getName())) {
+            cla = this.argParser.getArg(RTJPerfArgs.HANDLER_PRIORITY_OPT.getName());
+            this.handlerPriority = ((Integer)cla.getValue()).intValue();
             cla = null;
         }
 
         this.schedParams = new PriorityParameters(this.handlerPriority);
 
-        cla = this.argParser.getCommandLineArgument(RTJPerfArgs.FIRE_COUNT_OPT);
-        this.fireCount = Integer.parseInt(cla.getValue());
+        cla = this.argParser.getArg(RTJPerfArgs.FIRE_COUNT_OPT.getName());
+        this.fireCount = ((Integer)cla.getValue()).intValue();
         cla = null;
         
-//         if (this.argParser.isCommandLineArgumentDefined(RTJPerfArgs.MEMORY_AREA_OPT)) {
-//             cla = this.argParser.getCommandLineArgument(RTJPerfArgs.MEMORY_AREA_OPT);
-//             this.memoryArea =SingletonMemoryAreaAccessor.instance(cla.getValue());
-//         }
-//         else 
-//             memoryArea =
-//                 SingletonMemoryAreaAccessor.instance(SingletonMemoryAreaAccessor.HEAP_MEMORY);
+        if (this.argParser.isArgDefined(RTJPerfArgs.MEMORY_AREA_OPT.getName())) {
+            cla = this.argParser.getArg(RTJPerfArgs.MEMORY_AREA_OPT.getName());
+            this.memoryArea =SingletonMemoryAreaAccessor.instance((String)cla.getValue());
+        }
+        else 
+            memoryArea =
+                SingletonMemoryAreaAccessor.instance(SingletonMemoryAreaAccessor.HEAP_MEMORY);
         
 
-        cla = this.argParser.getCommandLineArgument(RTJPerfArgs.MEM_PROFILE_OPT);
+        cla = this.argParser.getArg(RTJPerfArgs.MEM_PROFILE_OPT.getName());
         if (cla != null) {
             this.memProfiling = true;
-            this.profileStep = Integer.parseInt(cla.getValue());
+            this.profileStep = ((Integer)cla.getValue()).intValue();
         }
         // Set up remaining parameters...
 
@@ -147,27 +153,15 @@ public class DispatchDelayTestLauncher {
                                                              this.procGroupParams,
                                                              this.noHeap,
                                                              this.logic);
-            // ((ThreadBoundAsynchHandler)this.eventHandler).activate();
         }
         else {
-            System.out.println(">> Creating PooledAsyncEventHandler with 3 executors!");
-            PooledExecutor executor = new PooledExecutor(3,
-                                                         this.schedParams,
-                                                         this.releaseParams,
-                                                         this.memoryParams,
-                                                         this.memoryArea,
-                                                         this.procGroupParams,
-                                                         this.noHeap);
-            
-            this.eventHandler = new PooledAsyncEventHandler(this.schedParams,
-                                                            this.releaseParams,
-                                                            this.memoryParams,
-                                                            this.memoryArea,
-                                                            this.procGroupParams,
-                                                            this.noHeap,
-                                                            this.logic,
-                                                            executor);
-            executor = null;
+            this.eventHandler = new ThreadedAsyncEventHandler(this.schedParams,
+                                                              this.releaseParams,
+                                                              this.memoryParams,
+                                                              this.memoryArea,
+                                                              this.procGroupParams,
+                                                              this.noHeap,
+                                                              this.logic);
         }
 
         int testThreadPriority;
@@ -177,14 +171,14 @@ public class DispatchDelayTestLauncher {
             testThreadPriority = PriorityScheduler.MIN_PRIORITY;
 
         AsyncEvent event = new AsyncEvent();
-        cla = this.argParser.getCommandLineArgument(RTJPerfArgs.LP_ASYNC_HANDLER_NUMBER_OPT);
+        cla = this.argParser.getArg(RTJPerfArgs.LP_ASYNC_HANDLER_NUMBER_OPT.getName());
         
         if (cla != null) {
-            int handlerNum = Integer.parseInt(cla.getValue());
-            cla = cla = this.argParser.getCommandLineArgument(RTJPerfArgs.LP_ASYNC_HANDLER_PRIORITY_OPT);
+            int handlerNum = ((Integer)cla.getValue()).intValue();
+            cla = cla = this.argParser.getArg(RTJPerfArgs.LP_ASYNC_HANDLER_PRIORITY_OPT.getName());
             int handlerPrio;
             if (cla != null) {
-                handlerPrio = Integer.parseInt(cla.getValue());
+                handlerPrio = ((Integer)cla.getValue()).intValue();
                 cla = null;
             }
             else
@@ -224,25 +218,38 @@ public class DispatchDelayTestLauncher {
         return this.memoryArea;
     }
 
+    private static ArgParser parseArgs(String[] args) throws Exception {
+        CommandLineSpec spec = new CommandLineSpec();
+
+        // -- Required Args --
+        spec.addRequiredArg(RTJPerfArgs.OUT_DIR_OPT);
+        spec.addRequiredArg(RTJPerfArgs.FIRE_COUNT_OPT);
+
+        // -- Optional Args --
+        spec.addArg(RTJPerfArgs.THREAD_BOUND_OPT);
+        spec.addArg(RTJPerfArgs.MEMORY_AREA_OPT);
+        spec.addArg(RTJPerfArgs.NO_HEAP_OPT);
+        spec.addArg(RTJPerfArgs.HANDLER_PRIORITY_OPT);
+        
+        ArgParser argParser = new ArgParser(spec, new TestHelpHandler());
+        argParser.parse(args);
+        return argParser;
+    }
+    
     public static void main(String[] args)  throws Exception {
         final String[] fargs = args;
-        ArgParser.setArgProperty(RTJPerfArgs.HELP_OPT + ".handler",
-                                 "edu.uci.ece.doc.rtjperf.asynch.timing.TestHelpHandler");
-        ArgParser argParser = new ArgParser(args);
+        ArgParser argParser = parseArgs(args);
         String memType = "heap";
-        CommandLineArgument cla = argParser.getCommandLineArgument(RTJPerfArgs.MEMORY_AREA_OPT);
+        if (argParser.isArgDefined(RTJPerfArgs.MEMORY_AREA_OPT.getName()))
+            memType =
+                (String)argParser.getArg(RTJPerfArgs.MEMORY_AREA_OPT.getName()).getValue();
         
-        if (cla != null && cla.getArgValueNum() >= 1)
-            memType = cla.getValue();
-
-        //final MemoryArea memoryArea = SingletonMemoryAreaAccessor.instance(memType);
-        final ScopedMemory memoryArea = new CTMemoryArea(50000000);
+        final MemoryArea memoryArea = SingletonMemoryAreaAccessor.instance(memType);
         argParser = null;
         
         // This thread is used to guarantee that all the memory
         // allocated during the test is allocated out of the type of
         // memory specified by the command line argument --memoryArea
-        //        RealtimeThread rtThread = new RealtimeThread() {
         final Runnable logic = new Runnable() {
                 public void run() {
                     try {
@@ -265,8 +272,15 @@ public class DispatchDelayTestLauncher {
             };
         
         // MemoryArea.enter can only be called by a RealtimeThread
-        PriorityParameters pp = new PriorityParameters((PriorityScheduler.MAX_PRIORITY - PriorityScheduler.MIN_PRIORITY)/2);
-        RealtimeThread rtThread = new RealtimeThread(pp, null, null, null, null, rtlogic);
+        PriorityParameters pp =
+            new PriorityParameters((PriorityScheduler.MAX_PRIORITY - PriorityScheduler.MIN_PRIORITY)/2);
+
+        RealtimeThread rtThread = new RealtimeThread(pp,
+                                                     null,
+                                                     null,
+                                                     null,
+                                                     null,
+                                                     rtlogic);
         
         rtThread.start();
         rtThread.join();

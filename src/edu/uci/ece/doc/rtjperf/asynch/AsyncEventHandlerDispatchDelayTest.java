@@ -1,12 +1,34 @@
-/*-------------------------------------------------------------------------*
- * $Id: AsyncEventHandlerDispatchDelayTest.java,v 1.4 2002/03/07 04:44:07 corsaro Exp $
- *-------------------------------------------------------------------------*/
-package edu.uci.ece.doc.rtjperf.asynch.timing;
+// ************************************************************************
+//    $Id: AsyncEventHandlerDispatchDelayTest.java,v 1.5 2002/04/16 19:12:51 corsaro Exp $
+// ************************************************************************
+//
+//                               RTJPerf
+//
+//               Copyright (C) 2001-2002 by Angelo Corsaro.
+//                         <corsaro@ece.uci.edu>
+//                          All Rights Reserved.
+//
+//   Permission to use, copy, modify, and distribute this software and
+//   its  documentation for any purpose is hereby  granted without fee,
+//   provided that the above copyright notice appear in all copies and
+//   that both that copyright notice and this permission notice appear
+//   in  supporting  documentation. I don't make  any  representations
+//   about the  suitability  of this  software for any  purpose. It is
+//   provided "as is" without express or implied warranty.
+//
+//
+//
+// *************************************************************************
+//  
+// *************************************************************************
+package edu.uci.ece.doc.rtjperf.asynch;
 
-// -- RTJPerf Import --
-import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
+// -- jTools Import --
+import edu.uci.ece.ac.time.HighResTimer;
+import edu.uci.ece.ac.time.PerformanceReport;
+import edu.uci.ece.ac.concurrent.*;
+
 import edu.uci.ece.doc.rtjperf.sys.PerformanceTestCase;
-import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
 
 // -- RTJava Import --
 import javax.realtime.AsyncEvent;
@@ -16,8 +38,6 @@ import javax.realtime.RealtimeThread;
 import javax.realtime.NoHeapRealtimeThread;
 import javax.realtime.MemoryArea;
 
-// -- DOC Utils Import --
-import edu.uci.ece.doc.util.concurrent.EventVariable;
 
 /**
  * This test tryes to identify the delay, and jitter incurred in

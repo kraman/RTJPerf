@@ -1,16 +1,32 @@
-/*-------------------------------------------------------------------------*
- * $Id: EventHandlerLogic.java,v 1.2 2002/02/12 20:57:54 corsaro Exp $
- *-------------------------------------------------------------------------*/
-package edu.uci.ece.doc.rtjperf.asynch.timing;
+// ************************************************************************
+//    $Id: EventHandlerLogic.java,v 1.3 2002/04/16 19:12:52 corsaro Exp $
+// ************************************************************************
+//
+//                               RTJPerf
+//
+//               Copyright (C) 2001-2002 by Angelo Corsaro.
+//                         <corsaro@ece.uci.edu>
+//                          All Rights Reserved.
+//
+//   Permission to use, copy, modify, and distribute this software and
+//   its  documentation for any purpose is hereby  granted without fee,
+//   provided that the above copyright notice appear in all copies and
+//   that both that copyright notice and this permission notice appear
+//   in  supporting  documentation. I don't make  any  representations
+//   about the  suitability  of this  software for any  purpose. It is
+//   provided "as is" without express or implied warranty.
+//
+//
+//
+// *************************************************************************
+//  
+// *************************************************************************
+package edu.uci.ece.doc.rtjperf.asynch;
 
-// -- RTJPerf Import --
-import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
-import edu.uci.ece.doc.rtjperf.sys.HighResTime;
-import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
-
-// -- DOC Utils Import --
-import edu.uci.ece.doc.util.concurrent.EventVariable;
-
+// -- jTools Import --
+import edu.uci.ece.ac.jargo.*;
+import edu.uci.ece.ac.time.*;
+import edu.uci.ece.ac.concurrent.EventVariable;
 
 /**
  * This class encapsulates the event handling logic.
