@@ -1,17 +1,48 @@
 #
-# $Id: rtjperf.py,v 1.1 2002/10/17 01:01:13 corsaro Exp $
+# $Id: rtjperf.py,v 1.2 2002/10/17 03:20:26 corsaro Exp $
 #
 # This module contains the definition for the classes and function used
 # by RTJPerf to run its tests
 #
 
 import os
+import time
 
+class RTSPTest(object):
+
+    def __init__(self):
+        self.retVal = 0
+        self.testComment = nil
+    
+    def run(self):
+        start = time.time();
+        print '\nrtjpy:>> Test Started on', time.ctime(start)
+        print '\nrtjpy:>>', self.getComment()
+        print 'rtjpy:>> Running...'
+
+        # call template method
+        self.runImpl()
+
+        end = time.time() 
+        print 'rtjpy:>> Test Completed on', time.ctime(end)
+        print 'rtjpy:>> Execution Time (secs):', (end - start)
+        print 'rtjpy:>> Return Value:', self.retVal 
+        print 'rtjpy:>> Test Completed\n'
+
+    def runImpl(self):
+        self.retVal = -1
+
+    def setComment(self, str):
+        self.testComment = str
+
+    def getComment(self):
+        return self.testComment
+        
 #
 # This class defines the Memory Allocation Test
 #
-class MemAllocTimeTest:
-
+class MemAllocTimeTest(RTSPTest): 
+    
     def __init__(self, fileName, iteration, allocSize, memType, memSize, outDir):
         self.fileName = fileName
         self.iteration = iteration
@@ -20,25 +51,19 @@ class MemAllocTimeTest:
         self.memSize = memSize
         self.outDir = outDir
 
-#         self.argList = [self.fileName, '--count', self.iteration,
-#                         '--allocSize', self.allocSize,
-#                         '--scopedMemoryType', self.memType,
-#                         '--memSize', self.memSize,
-#                         '--outDir', self.outDir]
+        self.argList = [self.fileName,
+                        '--count', str(self.iteration),
+                        '--allocSize', str(self.allocSize),
+                        '--scopedMemoryType', self.memType,
+                        '--memSize', str(self.memSize),
+                        '--outDir', self.outDir]
 
-    def run(self):
-        print '---------------- Starting Test ----------------'
-        print 'Command Line:', self.argList
-        retVal = os.spawnlp(os.P_WAIT, self.fileName, self.fileName,
-                            '--count', self.iteration,
-                            '--allocSize', self.allocSize,
-                            '--scopedMemoryType', self.memType,
-                            '--memSize', self.memSize,
-                            '--outDir', self.outDir)
-                            
+    def runImpl(self):
+        self.retVal = os.spawnlp(os.P_WAIT, self.fileName, self.fileName,
+                                 '--count', str(self.iteration),
+                                 '--allocSize', str(self.allocSize),
+                                 '--scopedMemoryType', self.memType,
+                                 '--memSize', str(self.memSize),
+                                 '--outDir', self.outDir)
         
-        print retVal
-        print '---------------- Test Completed ----------------'
-      
 
-    

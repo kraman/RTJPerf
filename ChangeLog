@@ -1,3 +1,16 @@
+Wed Oct 16 20:12:40 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/mem/Makefile: Changed target to $RTJP_HOME/bin.
+
+	* src/edu/uci/ece/doc/rtjperf/mem/runTest.py: Python script that
+	  takes care of running the Allocation Time tests.
+
+Wed Oct 16 17:58:18 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* src/python/rtjperf.py: Contains a set of class and function
+	  definition that support and automates the execution of RTJPerf
+	  tests.
+
 Wed Oct 16 12:16:53 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
 
 	* src/javax/realtime/CTMemory.java: Added. 
