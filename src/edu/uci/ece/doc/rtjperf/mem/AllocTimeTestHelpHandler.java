@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: AllocTimeTestHelpHandler.java,v 1.1 2002/04/16 20:19:07 corsaro Exp $
+//    $Id: AllocTimeTestHelpHandler.java,v 1.2 2002/11/17 04:06:06 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -39,7 +39,7 @@ public class AllocTimeTestHelpHandler extends HelpHandler {
         
         "--scopedMemoryType <mem-type>  Sets the scoped memory area type to\n" +
         "                               be used; available option are\n" +
-        "                               \"LTMemory\", \"VTMemory\" and \"CTMemory\"\n\n" +
+        "                               \"CTMemory\", \"LTMemory\" and \"VTMemory\"\n\n" +
 
         "--memSize <size>               Sets the size of the scoped memory in bytes\n\n" +
         

@@ -1,3 +1,9 @@
+Sat Nov 16 20:12:44 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/mem/AllocTimeTestHelpHandler.java:
+
+	  Fixed Memory order in the documentation. 
+
 Sat Nov 16 19:31:20 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/Rules.GNU: 
