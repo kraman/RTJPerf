@@ -1,4 +1,4 @@
-<!-- $Id: configure.xml,v 1.2 2002/04/17 00:00:55 corsaro Exp $ -->
+<!-- $Id: configure.xml,v 1.3 2002/11/17 03:31:50 corsaro Exp $ -->
 
 <!--+
     |
@@ -11,7 +11,7 @@
     |
     | File: configure.xml
     | Author: Angelo Corsaro <corsaro@doc.ece.uci.edu>
-    | $Revision: 1.2 $
+    | $Revision: 1.3 $
     |
     |
     | NOTE: Some part of this file is "mis-indented" on purpose
@@ -67,7 +67,7 @@ build.compiler.emacs = true
 #
 # Set Paranoia-Level warnings!!!
 #
-build.compiler.pedantic = true
+# build.compiler.pedantic = true
 
        </echo>
     </target>

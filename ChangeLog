@@ -1,3 +1,15 @@
+Sat Nov 16 19:31:20 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/Rules.GNU: 
+	* src/edu/uci/ece/doc/rtjperf/Macros.GNU:
+
+	  Handy rules and macros that encapsulate much of the detail
+	  needed to build the RTJPerf tests.
+
+	* src/edu/uci/ece/doc/rtjperf/mem/Makefile: Changed to take
+	  advantage of the new set of macros.
+	
+
 Wed Oct 16 20:12:40 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/mem/Makefile: Changed target to $RTJP_HOME/bin.

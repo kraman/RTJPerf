@@ -1,7 +1,13 @@
-OUTFILE = $(RTJP_HOME)/bin/AllocTimeTest
+##########################################################################
+# $Id: Makefile,v 1.9 2002/11/17 03:31:50 corsaro Exp $
+##########################################################################
 
-all:
-	gcj -O3  -I$(JRATE_HOME)/src -L$(JTOOLS_HOME)/lib -L$(JRATE_HOME)/lib   -lHRTime -ljTools -ljRate -ljRateRT  $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/util/*.java *.java -o $(OUTFILE)  --main=edu.uci.ece.doc.rtjperf.mem.AllocTimeTest
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Macros.GNU
 
-clean:
-	rm $(AllocTimeTest)
+TARGET := $(RTJP_HOME)/bin/AllocTimeTest
+MAINCLASS := edu.uci.ece.doc.rtjperf.mem.AllocTimeTest 
+
+SRCS := $(wildcard $(SRC_DIR)/mem/*.java)
+SRCS += $(wildcard $(SRC_DIR)/util/*.java)
+
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Rules.GNU
