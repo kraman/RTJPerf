@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: DispatchDelayTestLauncher.java,v 1.10 2002/12/13 10:45:39 corsaro Exp $
+//    $Id: DispatchDelayTestLauncher.java,v 1.11 2002/12/13 11:04:55 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -218,7 +218,9 @@ public class DispatchDelayTestLauncher {
                                                                             this.noHeap,
                                                                             noOpLogic);
 
-            for (int i = 0; i < handlerNum; ++i)
+            System.out.println("LPH : " + handlerNum);
+            System.out.println("Events : " + this.fireCount);
+            for (int i = 0; i < handlerNum; ++i) 
                 event.addHandler(handler);
             
         }
@@ -252,6 +254,8 @@ public class DispatchDelayTestLauncher {
         spec.addArg(RTJPerfArgs.MEMORY_AREA_OPT);
         spec.addArg(RTJPerfArgs.NO_HEAP_OPT);
         spec.addArg(RTJPerfArgs.HANDLER_PRIORITY_OPT);
+        spec.addArg(RTJPerfArgs.LP_ASYNC_HANDLER_NUMBER_OPT);
+        spec.addArg(RTJPerfArgs.LP_ASYNC_HANDLER_PRIORITY_OPT);
         
         ArgParser argParser = new ArgParser(spec, new TestHelpHandler());
         argParser.parse(args);
