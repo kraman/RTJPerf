@@ -1,7 +1,7 @@
 package edu.uci.ece.doc.rtjperf.mem.plain;
 
-import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
-import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
+import edu.uci.ece.ac.time.HighResTimer;
+import edu.uci.ece.ac.time.PerformanceReport;
 
 public class AllocTimeTest {
 
