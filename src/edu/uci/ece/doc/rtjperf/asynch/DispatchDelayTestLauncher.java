@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: DispatchDelayTestLauncher.java,v 1.4 2002/03/07 04:44:07 corsaro Exp $
+ * $Id: DispatchDelayTestLauncher.java,v 1.5 2002/03/19 07:14:47 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.asynch.timing;
 
@@ -18,6 +18,7 @@ import edu.uci.ece.doc.rtjperf.util.RTJPerfArgs;
 import javax.realtime.AsyncEventHandler;
 import javax.realtime.AsyncEvent;
 import javax.realtime.BoundAsyncEventHandler;
+import javax.realtime.PooledAsyncEventHandler;
 import javax.realtime.SchedulingParameters;
 import javax.realtime.ReleaseParameters;
 import javax.realtime.MemoryParameters;
@@ -33,6 +34,7 @@ import javax.realtime.RealtimeThread;
 import javax.realtime.ThreadedAsyncEventHandler;
 import javax.realtime.CTMemoryArea;
 import javax.realtime.ScopedMemory;
+import javax.realtime.util.PooledExecutor;
 
 // -- DOC Utils Import --
 import edu.uci.ece.doc.util.ArgParser;
@@ -148,14 +150,24 @@ public class DispatchDelayTestLauncher {
             // ((ThreadBoundAsynchHandler)this.eventHandler).activate();
         }
         else {
-            System.out.println(">> Creating ThreadedAsyncEventHandler!");
-            this.eventHandler = new ThreadedAsyncEventHandler(this.schedParams,
-                                                              this.releaseParams,
-                                                              this.memoryParams,
-                                                              this.memoryArea,
-                                                              this.procGroupParams,
-                                                              this.noHeap,
-                                                              this.logic);
+            System.out.println(">> Creating PooledAsyncEventHandler with 3 executors!");
+            PooledExecutor executor = new PooledExecutor(3,
+                                                         this.schedParams,
+                                                         this.releaseParams,
+                                                         this.memoryParams,
+                                                         this.memoryArea,
+                                                         this.procGroupParams,
+                                                         this.noHeap);
+            
+            this.eventHandler = new PooledAsyncEventHandler(this.schedParams,
+                                                            this.releaseParams,
+                                                            this.memoryParams,
+                                                            this.memoryArea,
+                                                            this.procGroupParams,
+                                                            this.noHeap,
+                                                            this.logic,
+                                                            executor);
+            executor = null;
         }
 
         int testThreadPriority;

@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: AllocTimeTest.java,v 1.4 2002/03/07 04:44:07 corsaro Exp $
+ * $Id: AllocTimeTest.java,v 1.5 2002/03/19 07:14:47 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.mem;
 
@@ -24,6 +24,7 @@ import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
  */
 public class AllocTimeTest {
 
+    
     static class MemAllocatorLogic implements Runnable {
 
         public static String ALLOC_TIME;
@@ -77,7 +78,6 @@ public class AllocTimeTest {
         final int count = Integer.parseInt(args[0]);
         final int allocSize = Integer.parseInt(args[1]);
         final int memType = Integer.parseInt(args[2]);
-
         long memSize = 100 * allocSize * count + count * 500000;
         final MemoryArea memArea = MemoryAreaFactory.createMemoryArea(memSize, memSize, memType);
 

@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: OneShotTimerTest.java,v 1.1 2002/03/08 03:38:35 corsaro Exp $
+ * $Id: OneShotTimerTest.java,v 1.2 2002/03/19 07:14:48 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.timer;
 
@@ -16,13 +16,14 @@ public class OneShotTimerTest {
     
     public static void main(String[] args) {
         final int count = Integer.parseInt(args[0]);
-        final int time = Integer.parseInt(args[1]); // time in msec
+        int millis = Integer.parseInt(args[1]); // time in msec
+        int nanos = Integer.parseInt(args[2]);
 
         final PerformanceReport report =
-            new PerformanceReport("OneShotTimer");
+            new PerformanceReport("OneShotTimerTest" + millis + "." + nanos);
         final HighResTimer timer = new HighResTimer();
         
-        final String dataPath = args[2];
+        final String dataPath = args[3];
         final EventVariable event = new EventVariable();
         
         Runnable logic = new Runnable() {
@@ -34,17 +35,21 @@ public class OneShotTimerTest {
                 }
             };
 
-        TimeoutHandler handler = new TimeoutHandler(null, null, null, null, null, false,
+        PriorityParameters prioParams =
+            new PriorityParameters(PriorityScheduler.MAX_PRIORITY);
+        TimeoutHandler handler = new TimeoutHandler(prioParams, null, null, null, null, false,
                                                     logic);
         
         OneShotTimer ostimer =
-            new OneShotTimer(new RelativeTime(time, 0),
+            new OneShotTimer(new RelativeTime(millis, nanos),
                              handler);
         
         ostimer.enable();
         for (int i = 0; i < count; i++) {
             ostimer.start();
             timer.start();
+            if (i == count - 1)
+                break;
             try {
                 event.await();
             } catch (InterruptedException e) {

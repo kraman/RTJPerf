@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: SynchYieldTest.java,v 1.2 2002/03/08 03:47:01 corsaro Exp $
+ * $Id: SynchYieldTest.java,v 1.3 2002/03/19 07:14:48 corsaro Exp $
  *-------------------------------------------------------------------------*/
 
 package edu.uci.ece.doc.rtjperf.thread;
@@ -12,7 +12,7 @@ import javax.realtime.*;
 
 public class SynchYieldTest {
 
-    static final String SYNCH_YIELD_TIME = "SynchYieldTimeTest";
+    static final String SYNCH_YIELD_TIME = "SynchYieldTime";
     
     static class Synchornizer {
         

@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: PeriodicThreadTest.java,v 1.1 2002/03/07 23:46:08 corsaro Exp $
+ * $Id: PeriodicThreadTest.java,v 1.2 2002/03/19 07:14:48 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.thread;
 
@@ -14,9 +14,10 @@ public class PeriodicThreadTest {
     public static void main(String[] args) {
         
         final int count = Integer.parseInt(args[0]);
-        int T = Integer.parseInt(args[1]);
-        final String path = args[2];
-        final PerformanceReport report = new PerformanceReport(THREAD_PERIOD + "Test");
+        int millis = Integer.parseInt(args[1]);
+        int nanos = Integer.parseInt(args[2]);
+        final String path = args[3];
+        final PerformanceReport report = new PerformanceReport(THREAD_PERIOD + "Test" + millis + "." + nanos);
         final HighResTimer timer = new HighResTimer();
 
         ////////////////////////////////////////////////////////////
@@ -24,6 +25,8 @@ public class PeriodicThreadTest {
         Runnable periodicThreadLogic = new Runnable() {
                 public void run() {
                     RealtimeThread rtThread = null;
+                    int roundCount = 0;
+                    
                     try {
                         rtThread = RealtimeThread.currentRealtimeThread();
 
@@ -43,8 +46,8 @@ public class PeriodicThreadTest {
         //
         ////////////////////////////////////////////////////////////
 
-        RelativeTime period = new RelativeTime(T, 0); // T msec Period
-        
+        RelativeTime period = new RelativeTime(millis, nanos); // T msec Period
+        System.out.println("Running Test with Period: " + millis + "ms " + nanos + " ns");
         PeriodicParameters periodicParams =
             new PeriodicParameters(new RelativeTime(0, 0), // Start Time
                                   period,

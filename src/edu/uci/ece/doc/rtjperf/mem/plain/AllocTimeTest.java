@@ -23,7 +23,7 @@ public class AllocTimeTest {
         }
 
         try {
-            report.generateDataFile("/home/angelo/Devel/RTJPerf/JDKData");
+            report.generateDataFile("/home/angelo/Devel/RTJPerf/PERCData");
         } catch (java.io.IOException e) {
             e.printStackTrace();
         }

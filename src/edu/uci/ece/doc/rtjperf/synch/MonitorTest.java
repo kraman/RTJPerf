@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: MonitorTest.java,v 1.1 2002/03/08 02:26:52 corsaro Exp $
+ * $Id: MonitorTest.java,v 1.2 2002/03/19 07:14:48 corsaro Exp $
  *-------------------------------------------------------------------------*/
 
 package edu.uci.ece.doc.rtjperf.synch;
@@ -10,6 +10,13 @@ import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
 import edu.uci.ece.doc.util.concurrent.EventVariable;
 import javax.realtime.*;
 
+/**
+ * This class provide a test to determine the amount of time it takes
+ * to enter and exit a Java Monitor.
+ *
+ * @author <a href="mailto:corsaro@doc.ece.uci.edu">Angelo Corsaro</a>
+ * @version 1.0
+ */
 public class MonitorTest {
 
     static final String MONITOR_ENTER_TIME =  "MonitorEnterTime";

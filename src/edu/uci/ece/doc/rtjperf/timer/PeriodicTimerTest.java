@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: PeriodicTimerTest.java,v 1.1 2002/03/08 03:46:06 corsaro Exp $
+ * $Id: PeriodicTimerTest.java,v 1.2 2002/03/19 07:14:48 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.timer;
 
@@ -17,13 +17,15 @@ public class PeriodicTimerTest {
 
     public static void main(String[] args) {
         final int count = Integer.parseInt(args[0]);
-        final int time = Integer.parseInt(args[1]); // time in msec
+        int millis = Integer.parseInt(args[1]); // time in msec
+        int nanos = Integer.parseInt(args[2]);
+
 
         final PerformanceReport report =
-            new PerformanceReport("PeriodicTimer");
+            new PerformanceReport("PeriodicTimerTest" + millis + "." + nanos);
         final HighResTimer timer = new HighResTimer();
         
-        final String dataPath = args[2];
+        final String dataPath = args[3];
         final EventVariable event = new EventVariable();
 
         Runnable logic = new Runnable() {
@@ -33,8 +35,11 @@ public class PeriodicTimerTest {
                     timer.reset();
                     fireCount++;
                     timer.start();
-                    if (fireCount == count)
+                    // System.out.println("FireCount: " + fireCount);
+                    if (fireCount == count) {
+                        // System.out.println("Signaling event variable");
                         event.signal();
+                    }
                 }
             };
 
@@ -43,7 +48,7 @@ public class PeriodicTimerTest {
         
         PeriodicTimer ptimer =
             new PeriodicTimer(new RelativeTime(0, 0), // start
-                              new RelativeTime(time, 0), // period
+                              new RelativeTime(millis, nanos), // period
                              handler);
         
         ptimer.enable();
@@ -51,6 +56,7 @@ public class PeriodicTimerTest {
         ptimer.start();
 
         try {
+            System.out.println("Waiting on event variable...");
             event.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
