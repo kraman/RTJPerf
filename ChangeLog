@@ -1,3 +1,7 @@
+Mon Mar 18 23:22:42 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* README: Added some more description to the README file.
+
 Thu Mar  7 19:44:43 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/timer/PeriodicTimerTest.java:
