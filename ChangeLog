@@ -1,3 +1,12 @@
+Sat Jan 12 18:36:48 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/build.xml:
+	* src/edu/uci/ece/doc/build.xml:
+        * src/edu/uci/ece/doc/rtjperf/build.xml:
+
+	  Added utils dirs to the build file.
+
+
 Sat Jan 12 18:24:25 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* src/edu/uci/ece/doc/util/CommandLineArgumentParser.java: Fixed mispelling 
