@@ -1,3 +1,7 @@
+Sat Jan 12 18:24:25 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/util/CommandLineArgumentParser.java: Fixed mispelling 
+
 Sat Dec 29 11:58:25 2001  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* build.xml:
