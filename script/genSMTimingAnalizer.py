@@ -9,7 +9,7 @@ import string
 
 
 def genParseDataCode(name, octaveScript):
-    for id in range(0, 2):
+    for id in range(0, 3):
         currSize = 4096
         matrix = '%s%d = [ \\\n' % (name, id)
         octaveScript.write(matrix)
@@ -57,18 +57,27 @@ def genCTTimingAnalizer():
     genReadKey("Press a key to see CTMEmory Exit Time", octaveScript)
     genLogPlotCode('ExitTime0', octaveScript) 
 
-
+    octaveScript.write('\nhold off \n\n')
     genReadKey("Press a key to see LT Enter Time", octaveScript)
     genLogPlotCode('EnterTime1', octaveScript)
     genReadKey("Press a key to see LT Exit Time", octaveScript)            
     genLogPlotCode('ExitTime1', octaveScript)
 
     octaveScript.write('\nhold off \n\n')
+    genReadKey("Press a key to see VT Enter Time", octaveScript)
+    genLogPlotCode('EnterTime2', octaveScript)
+    genReadKey("Press a key to see VT Exit Time", octaveScript)            
+    genLogPlotCode('ExitTime2', octaveScript)
+
+    octaveScript.write('\nhold off \n\n')
     genReadKey("Press a key to continue...", octaveScript)
     octaveScript.write('printf(\"Plotting Creation Times\\n\")\n\n')
-    genPlotCode('CreationTime0', octaveScript)
+    genLogPlotCode('CreationTime0', octaveScript)
     genReadKey("...", octaveScript)
-    genPlotCode('CreationTime1', octaveScript)
+    octaveScript.write('\nhold off \n\n')
+    genLogPlotCode('CreationTime1', octaveScript)
+    octaveScript.write('\nhold off \n\n')
+    genLogPlotCode('CreationTime2', octaveScript)
 
     octaveScript.write('\nhold off \n\n')
     genReadKey("Press a key to continue...", octaveScript)
@@ -76,6 +85,8 @@ def genCTTimingAnalizer():
     genLogPlotCode('ExecTime0', octaveScript)
     genReadKey("...", octaveScript)
     genLogPlotCode('ExecTime1', octaveScript)
+    genReadKey("...", octaveScript)
+    genLogPlotCode('ExecTime2', octaveScript)
 
     genReadKey("Press a key to exit...", octaveScript)            
     
