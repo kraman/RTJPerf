@@ -1,2 +1,2 @@
 export IMMORTAL_SIZE=6000000
-/home/zeus/Tools/RTJava/bin/tjvm  -Xbootclasspath=/home/zeus/Tools/RTJava/lib/foundation.jar -Djava.library.path=/home/zeus/Devel/RTJPerf/lib -Djava.class.path=/home/zeus/Devel/RTJPerf/classes edu.uci.ece.doc.rtjperf.$*
+/home/zeus/Tools/RTJava/bin/tjvm  -Xbootclasspath=/home/zeus/Tools/RTJava/lib/foundation.jar -Djava.library.path=/home/zeus/Devel/RTJPerf/lib -Djava.class.path=/home/zeus/Devel/RTJPerf/classes -Dproperties.load.path=$RTJP_HOME/bin edu.uci.ece.doc.rtjperf.$*
