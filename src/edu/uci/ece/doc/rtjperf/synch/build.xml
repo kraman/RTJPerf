@@ -1,10 +1,17 @@
-<!-- $Id: build.xml,v 1.1 2002/01/09 03:15:21 corsaro Exp $ -->
+<!-- $Id: build.xml,v 1.2 2002/03/08 02:26:52 corsaro Exp $ -->
 
 <project name="Time Tests" default="all" basedir="../../../../../../..">
 
    <property file="rtjperf-build-bootstrap.properties"/>
    <property file="rtjperf-build.properties"/>
 
-   <target name="all"/>
+   <target name="all">
+      <javac srcdir="${rtjperf.srcdir}"
+             destdir="${rtjperf.classdir}"
+             classpath="${rtjperf.classdir}:${rtjperf.rtjlib}"
+             debug="${rtjperf.debug}"
+             optimize="${rtjperf.optimization}"
+             includes="edu/uci/ece/doc/rtjperf/synch/**"/>
+   </target>
 
 </project>
