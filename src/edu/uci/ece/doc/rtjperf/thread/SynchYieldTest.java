@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: SynchYieldTest.java,v 1.6 2002/12/14 01:57:30 corsaro Exp $
+//    $Id: SynchYieldTest.java,v 1.7 2002/12/14 02:10:00 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -51,7 +51,7 @@ public class SynchYieldTest {
             timer = new HighResTimer();
         }
 
-        public synchronized void enterLow() {
+        public void enterLow() {
             // System.out.println("LP>> enterLow()");
             if (!firstTime) {
                 // System.out.println("LP>> Signaling enterEvent...");
@@ -70,7 +70,7 @@ public class SynchYieldTest {
             timer.start();
         }
 
-        public synchronized void enterHigh() {
+        public void enterHigh() {
             // System.out.println("HP>> enterHigh()");
             timer.stop();
             report.addMeasuredVariable(SYNCH_YIELD_TIME, timer.getElapsedTime());
