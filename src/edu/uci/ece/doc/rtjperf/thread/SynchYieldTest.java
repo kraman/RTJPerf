@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: SynchYieldTest.java,v 1.8 2002/12/14 02:21:05 corsaro Exp $
+//    $Id: SynchYieldTest.java,v 1.9 2002/12/14 03:51:02 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -55,30 +55,30 @@ public class SynchYieldTest {
         }
 
         public synchronized void enterLow() {
-            System.out.println("LP>> enterLow()");
+            //            System.out.println("LP>> enterLow()");
             if (!firstTime) {
-                System.out.println("LP>> Signaling enterEvent...");
+                //                System.out.println("LP>> Signaling enterEvent...");
                 enterEvent.signal();
             }
             else
                 firstTime = false;
             try {
-                System.out.println("LP>> Waiting on exitEvent...");
+                //                System.out.println("LP>> Waiting on exitEvent...");
                 exitEvent.await();
-                System.out.println("LP>> exitEvent Signaled...");
+                //                System.out.println("LP>> exitEvent Signaled...");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("LP>> leaveLow()");
+            //            System.out.println("LP>> leaveLow()");
             timer.start();
         }
 
         public synchronized void enterHigh() {
-            System.out.println("HP>> enterHigh()");
+            //            System.out.println("HP>> enterHigh()");
             timer.stop();
             report.addMeasuredVariable(SYNCH_YIELD_TIME, timer.getElapsedTime());
             timer.reset();
-            System.out.println("HP>> leaveHigh()");
+            //            System.out.println("HP>> leaveHigh()");
         }
         
     }
@@ -101,7 +101,7 @@ public class SynchYieldTest {
                         try {
                             if (i == count - 1)
                                 break;
-                            System.out.println("LP>> Waiting on nextIterationEvent... - " + i);
+                            //                            System.out.println("LP>> Waiting on nextIterationEvent... - " + i);
                             nextIterationEvent.await();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -113,15 +113,15 @@ public class SynchYieldTest {
         Runnable highPrioLogic = new Runnable() {
                 public void run() {
                     for (int i = 0; i < count; i++) {
-                        System.out.println("HP>> Signaling exitEvent...");
+                        //                        System.out.println("HP>> Signaling exitEvent...");
                         exitEvent.signal();
                         synch.enterHigh();
                         try {
                             if (i == count - 1)
                                 break;
-                            System.out.println("HP>> Signaling nextIterationEvent...  - " + i);
+                            //                            System.out.println("HP>> Signaling nextIterationEvent...  - " + i);
                             nextIterationEvent.signal();
-                            System.out.println("HP>> Waiting on enterEvent...");
+                            //                            System.out.println("HP>> Waiting on enterEvent...");
                             enterEvent.await();
                         } catch (InterruptedException e) {
                             e.printStackTrace();

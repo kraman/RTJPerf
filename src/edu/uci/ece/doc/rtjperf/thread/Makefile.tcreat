@@ -1,0 +1,14 @@
+##########################################################################
+# $Id: Makefile.tcreat,v 1.1 2002/12/14 03:46:08 corsaro Exp $
+##########################################################################
+
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Macros.GNU
+
+TARGET := $(RTJP_HOME)/bin/RTTCreationTest
+MAINCLASS := edu.uci.ece.doc.rtjperf.thread.RTCreationLatencyTest 
+
+SRCS := $(SRC_DIR)/thread/RTCreationLatencyTest.java
+SRCS += $(wildcard $(SRC_DIR)/util/*.java)
+SRCS += $(wildcard $(SRC_DIR)/sys/*.java)
+
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Rules.GNU
