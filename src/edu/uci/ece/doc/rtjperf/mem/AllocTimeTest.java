@@ -1,4 +1,7 @@
-package edu.uci.ece.doc.rtjperf.mem;
+/*-------------------------------------------------------------------------*
+ * $Id: AllocTimeTest.java,v 1.2 2002/01/11 05:02:54 corsaro Exp $
+ *-------------------------------------------------------------------------*/
+//package edu.uci.ece.doc.rtjperf.mem;
 
 // -- RTJava Import --
 import javax.realtime.MemoryArea;
@@ -17,7 +20,7 @@ import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
  * @author <a href="mailto:corsaro@doc.ece.uci.edu">Angelo Corsaro</a>
  * @version 1.0
  */
-public class AllocTimeTest extends {
+public class AllocTimeTest {
 
     static class MemAllocatorLogic implements Runnable {
 
@@ -50,7 +53,7 @@ public class AllocTimeTest extends {
                 report.addMeasuredVariable(ALLOC_TIME, timer.getElapsedTime());
             }
             try {
-                report.generateDataFile("/home/angelo/Devel/RTJPerf/src/edu/uci/ece/doc/rtjperf/mem");
+                report.generateDataFile("/home/zeus/Devel/RTJPerf/src/edu/uci/ece/doc/rtjperf/mem");
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
