@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: SynchYieldTest.java,v 1.5 2002/04/24 00:06:09 corsaro Exp $
+//    $Id: SynchYieldTest.java,v 1.6 2002/12/14 01:57:30 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -41,7 +41,10 @@ public class SynchYieldTest {
         private EventVariable enterEvent;
         private boolean firstTime = true;
         
-        public Synchornizer(EventVariable exitEvent,EventVariable enterEvent, PerformanceReport report) {
+        public Synchornizer(EventVariable exitEvent,
+                            EventVariable enterEvent,
+                            PerformanceReport report)
+        {
             this.exitEvent = exitEvent;
             this.enterEvent = enterEvent;
             this.report = report;

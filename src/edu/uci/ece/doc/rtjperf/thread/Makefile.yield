@@ -1,0 +1,14 @@
+##########################################################################
+# $Id: Makefile.yield,v 1.1 2002/12/14 01:57:30 corsaro Exp $
+##########################################################################
+
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Macros.GNU
+
+TARGET := $(RTJP_HOME)/bin/YieldTest
+MAINCLASS := edu.uci.ece.doc.rtjperf.thread.YieldTest 
+
+SRCS := $(wildcard $(SRC_DIR)/thread/*.java)
+SRCS += $(wildcard $(SRC_DIR)/util/*.java)
+SRCS += $(wildcard $(SRC_DIR)/sys/*.java)
+
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Rules.GNU

@@ -1,0 +1,14 @@
+##########################################################################
+# $Id: Makefile.syield,v 1.1 2002/12/14 01:57:30 corsaro Exp $
+##########################################################################
+
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Macros.GNU
+
+TARGET := $(RTJP_HOME)/bin/SYieldTest
+MAINCLASS := edu.uci.ece.doc.rtjperf.thread.SynchYieldTest 
+
+SRCS := $(SRC_DIR)/thread/SynchYieldTest.java
+SRCS += $(wildcard $(SRC_DIR)/util/*.java)
+SRCS += $(wildcard $(SRC_DIR)/sys/*.java)
+
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Rules.GNU
