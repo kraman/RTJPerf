@@ -26,12 +26,12 @@ hold on;
 printf("Parsed Data...\n");
 
 for i = 1:size(CT)(1)
-    plot(CT(i,10:(size(CT)(2))));
+    semilogy(CT(i,10:(size(CT)(2))));
 endfor
 printf("Are you ready to see the LTMemory Results?...\n");
 scanf("%s", 1);
 for i = 1:size(LT)(1)
-    plot(LT(i,10:(size(LT)(2))));
+    semilogyLT(i,10:(size(LT)(2))));
 endfor
         
 printf("Press a key and enter to exit...\n");

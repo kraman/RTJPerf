@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: PeriodicThreadTest.java,v 1.3 2002/04/24 00:06:09 corsaro Exp $
+//    $Id: PeriodicThreadTest.java,v 1.4 2003/01/04 20:23:20 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -51,9 +51,11 @@ public class PeriodicThreadTest {
                         rtThread = RealtimeThread.currentRealtimeThread();
 
                         for (int i = 0; i < count; ++i) {
+                            // System.out.println("Going To Sleep");
                             timer.start();
                             rtThread.waitForNextPeriod();
                             timer.stop();
+                            // System.out.println("Done Sleeping");
                             report.addMeasuredVariable(THREAD_PERIOD, timer.getElapsedTime());
                         }
                         report.generateDataFile(path + "/");
