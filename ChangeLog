@@ -1,3 +1,41 @@
+Mon Feb 25 13:24:21 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/mem/plain/AllocTimeTest.cc:
+	* src/edu/uci/ece/doc/rtjperf/mem/plain/AllocTimeTest.java:
+	* src/edu/uci/ece/doc/rtjperf/mem/plain/Makefile
+	* src/edu/uci/ece/doc/rtjperf/mem/plain/build.xml:
+
+	  Added some more allocation test cases that let us measure the
+	  allocation time for regular java, PERC and C++.
+	
+	* src/edu/uci/ece/doc/rtjperf/sys/Makefile: added ability to
+	  create static lib.
+	
+	* src/javax/realtime/CTMemoryArea.java: Wrapper around the RI
+	  LTMemory area that allows us to run the same kind of test to
+	  profile VT, LT and CT memory area.
+	
+	* src/javax/realtime/build.xml:
+	* src/build.xml:
+
+	  Made needed changes to build added directories and files.
+	
+	* src/edu/uci/ece/doc/rtjperf/loading/EagerTypeFactory.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/EagerTypeFactoryTest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/Makefile:
+
+	  Test to measure the effect of dynamic class loading.
+	
+	* src/edu/uci/ece/doc/rtjperf/mem/AllocTimeTest.java:
+	* src/edu/uci/ece/doc/rtjperf/mem/Makefile:
+	* src/edu/uci/ece/doc/rtjperf/mem/build.xml:
+
+	  Added code to test the piRate CTMemory scheme.
+
+	* rtjperf-build.properties: Added entry to be able to use GCJ as
+	  Java compiler.
+	  
+
 Tue Feb 12 12:57:08 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* bin/runTest:
@@ -36,36 +74,36 @@ Tue Jan 15 09:06:52 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 	* src/edu/uci/ece/doc/rtjperf/loading/EagerClassLoadingTest.java:
 	* src/edu/uci/ece/doc/rtjperf/loading/IFace.java:
 	* src/edu/uci/ece/doc/rtjperf/loading/IIFace.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/IIIFace.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/IVFace.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/IXFace.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TenFace.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeI.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeII.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIII.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIIITest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIITest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeITest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIV.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIVTest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIX.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIXTest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeV.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVI.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVII.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVIII.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVIIITest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVIITest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVITest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVTest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeX.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/TypeXTest.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/VFace.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/VIFace.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/VIIFace.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/VIIIFace.java:
-    	* src/edu/uci/ece/doc/rtjperf/loading/XFace.java:
-  	* src/edu/uci/ece/doc/rtjperf/sys/Makefile:
+	* src/edu/uci/ece/doc/rtjperf/loading/IIIFace.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/IVFace.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/IXFace.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TenFace.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeI.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeII.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeIII.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeIIITest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeIITest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeITest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeIV.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeIVTest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeIX.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeIXTest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeV.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeVI.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeVII.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeVIII.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeVIIITest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeVIITest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeVITest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeVTest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeX.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeXTest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/VFace.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/VIFace.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/VIIFace.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/VIIIFace.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/XFace.java:
+	* src/edu/uci/ece/doc/rtjperf/sys/Makefile:
 
 	 This test check how the time to link-in a class changes depending
 	  on the number of parents, and implemented ifaces.
