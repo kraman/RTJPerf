@@ -1,14 +1,15 @@
-<!-- $Id: build.xml,v 1.1 2002/01/09 03:15:20 corsaro Exp $ -->
+<!-- $Id: build.xml,v 1.2 2002/04/24 00:06:09 corsaro Exp $ -->
 
 <!--+
     |
-    | This is the mail ANT file for RTJPerf. Please before building RTJPerf make sure
-    | that you've read the README files, so that you have had a change to
-    | select all the component that you want/need to build.
+    | This is the mail ANT file for RTJPerf. Please before building
+    | RTJPerf make sure that you've read the README files,  so that
+    | you have had a change to select all the component that you
+    | want/need to build.
     |
     | File: build.xml
     | Author: Angelo Corsaro <corsaro@doc.ece.uci.edu>
-    | $Revision: 1.1 $
+    | $Revision: 1.2 $
     |
     +-->
 

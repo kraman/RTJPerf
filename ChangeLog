@@ -1,3 +1,33 @@
+Tue Apr 23 16:59:21 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/javax/realtime/build.xml: 
+	* src/edu/uci/ece/doc/rtjperf/timer/TimeoutHandler.java: 
+	* src/edu/uci/ece/doc/rtjperf/timer/PeriodicTimerTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/timer/OneShotTimerTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/timer/AbsOneShotTimerTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/thread/plain/YieldTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/thread/plain/SynchYieldTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/thread/plain/CreationLatencyTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/thread/YieldTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/thread/SynchYieldTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/thread/RTCreationLatencyTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/thread/PeriodicThreadTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/thread/CreationLatencyTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/sys/build.xml: 
+	* src/edu/uci/ece/doc/rtjperf/build.xml: 
+	* src/build.xml: 
+	* build.xml:
+
+	  Fixed some import that were still in the pre jTools style
+
+	  Updated build file to include thread and timer tests. (Thanks to
+	  Jim Urnes <james.m.urnes-jr@boeing.com> to pointing this out.
+
+Tue Apr 23 16:30:53 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/sys/build.xml: Removed old target
+	  that used to compile the native implementation of timers. 
+
 Tue Apr 16 13:18:12 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/mem/plain/AllocTimeTest.java: 

@@ -1,4 +1,4 @@
-<!-- $Id: build.xml,v 1.4 2002/04/17 00:00:55 corsaro Exp $ -->
+<!-- $Id: build.xml,v 1.5 2002/04/24 00:06:09 corsaro Exp $ -->
 
 <project name="RTJPerf Source Build" default="all" basedir="..">
 
@@ -18,7 +18,6 @@
 
 
    <target name="clean">
-      <ant antfile="${rtjperf.srcdir}/edu/uci/ece/doc/build.xml" target="clean"/>
       <ant antfile="${rtjperf.srcdir}/javax/realtime/build.xml" target="clean"/>
       <ant antfile="${rtjperf.srcdir}/edu/uci/ece/doc/rtjperf/build.xml" target="clean"/>
       <delete dir="${rtjperf.classdir}"/>

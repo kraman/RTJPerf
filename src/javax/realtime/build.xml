@@ -1,4 +1,4 @@
-<!-- $Id: build.xml,v 1.1 2002/02/25 21:28:08 corsaro Exp $ -->
+<!-- $Id: build.xml,v 1.2 2002/04/24 00:06:09 corsaro Exp $ -->
 
 <project name="Javax-Realtime" default="all" basedir="../../../">
 
@@ -12,6 +12,10 @@
              debug="${rtjperf.debug}"
              optimize="${rtjperf.optimization}"
              includes="javax/realtime/**"/>
+   </target>
+
+   <target name="clean">
+      <delete dir="${rtjperf.classdir}/javax"/>
    </target>
 
 </project>

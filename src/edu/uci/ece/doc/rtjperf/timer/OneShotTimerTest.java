@@ -1,19 +1,39 @@
-/*-------------------------------------------------------------------------*
- * $Id: OneShotTimerTest.java,v 1.2 2002/03/19 07:14:48 corsaro Exp $
- *-------------------------------------------------------------------------*/
+// ************************************************************************
+//    $Id: OneShotTimerTest.java,v 1.3 2002/04/24 00:06:09 corsaro Exp $
+// ************************************************************************
+//
+//                               RTJPerf
+//
+//               Copyright (C) 2001-2002 by Angelo Corsaro.
+//                         <corsaro@ece.uci.edu>
+//                          All Rights Reserved.
+//
+//   Permission to use, copy, modify, and distribute this software and
+//   its  documentation for any purpose is hereby  granted without fee,
+//   provided that the above copyright notice appear in all copies and
+//   that both that copyright notice and this permission notice appear
+//   in  supporting  documentation. I don't make  any  representations
+//   about the  suitability  of this  software for any  purpose. It is
+//   provided "as is" without express or implied warranty.
+//
+//
+//
+// *************************************************************************
+//  
+// *************************************************************************/
 package edu.uci.ece.doc.rtjperf.timer;
 
-import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
-import edu.uci.ece.doc.rtjperf.sys.HighResTime;
-import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
-import edu.uci.ece.doc.util.concurrent.EventVariable;
+import edu.uci.ece.ac.time.HighResTimer;
+import edu.uci.ece.ac.time.HighResTime;
+import edu.uci.ece.ac.time.PerformanceReport;
+import edu.uci.ece.ac.concurrent.EventVariable;
 import javax.realtime.*;
 
 
 public class OneShotTimerTest {
 
     static final String TIMEOUT_TIME = "TimeOutTime";
-    
+
     public static void main(String[] args) {
         final int count = Integer.parseInt(args[0]);
         int millis = Integer.parseInt(args[1]); // time in msec
@@ -22,10 +42,10 @@ public class OneShotTimerTest {
         final PerformanceReport report =
             new PerformanceReport("OneShotTimerTest" + millis + "." + nanos);
         final HighResTimer timer = new HighResTimer();
-        
+
         final String dataPath = args[3];
         final EventVariable event = new EventVariable();
-        
+
         Runnable logic = new Runnable() {
                 public void run() {
                     timer.stop();
@@ -39,11 +59,11 @@ public class OneShotTimerTest {
             new PriorityParameters(PriorityScheduler.MAX_PRIORITY);
         TimeoutHandler handler = new TimeoutHandler(prioParams, null, null, null, null, false,
                                                     logic);
-        
+
         OneShotTimer ostimer =
             new OneShotTimer(new RelativeTime(millis, nanos),
                              handler);
-        
+
         ostimer.enable();
         for (int i = 0; i < count; i++) {
             ostimer.start();
@@ -56,12 +76,12 @@ public class OneShotTimerTest {
                 e.printStackTrace();
             }
         }
-        
+
         try {
             report.generateDataFile(dataPath + "/");
         } catch (java.io.IOException ioe) {
             ioe.printStackTrace();
         }
     }
-    
+
 }

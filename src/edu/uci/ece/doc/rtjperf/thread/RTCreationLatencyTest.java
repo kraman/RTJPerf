@@ -1,11 +1,31 @@
-/*-------------------------------------------------------------------------*
- * $Id: RTCreationLatencyTest.java,v 1.1 2002/04/13 19:22:25 corsaro Exp $
- *-------------------------------------------------------------------------*/
+// ************************************************************************
+//    $Id: RTCreationLatencyTest.java,v 1.2 2002/04/24 00:06:09 corsaro Exp $
+// ************************************************************************
+//
+//                               RTJPerf
+//
+//               Copyright (C) 2001-2002 by Angelo Corsaro.
+//                         <corsaro@ece.uci.edu>
+//                          All Rights Reserved.
+//
+//   Permission to use, copy, modify, and distribute this software and
+//   its  documentation for any purpose is hereby  granted without fee,
+//   provided that the above copyright notice appear in all copies and
+//   that both that copyright notice and this permission notice appear
+//   in  supporting  documentation. I don't make  any  representations
+//   about the  suitability  of this  software for any  purpose. It is
+//   provided "as is" without express or implied warranty.
+//
+//
+//
+// *************************************************************************
+//  
+// *************************************************************************
 package edu.uci.ece.doc.rtjperf.thread;
 
-import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
-import edu.uci.ece.doc.rtjperf.sys.HighResTime;
-import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
+import edu.uci.ece.ac.time.HighResTimer;
+import edu.uci.ece.ac.time.HighResTime;
+import edu.uci.ece.ac.time.PerformanceReport;
 import javax.realtime.*;
 
 public class RTCreationLatencyTest  {
