@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: AsyncEventHandlerDispatchDelayTest.java,v 1.1 2002/01/09 03:15:21 corsaro Exp $
+ * $Id: AsyncEventHandlerDispatchDelayTest.java,v 1.2 2002/01/13 06:58:21 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.asynch.timing;
 
@@ -81,7 +81,6 @@ public class AsyncEventHandlerDispatchDelayTest extends PerformanceTestCase {
             // termination of the thread that was used to run the
             // handler, when the test is run on plain Linux instead
             // of Linux RT.
-            
             eventVar.await(1);
         }
         catch (InterruptedException e) {
