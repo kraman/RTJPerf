@@ -1,3 +1,43 @@
+Tue Jan 15 09:06:52 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/loading/EagerClassLoadingTest.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/IFace.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/IIFace.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/IIIFace.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/IVFace.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/IXFace.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TenFace.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeI.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeII.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIII.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIIITest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIITest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeITest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIV.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIVTest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIX.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeIXTest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeV.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVI.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVII.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVIII.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVIIITest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVIITest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVITest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeVTest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeX.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/TypeXTest.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/VFace.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/VIFace.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/VIIFace.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/VIIIFace.java:
+    	* src/edu/uci/ece/doc/rtjperf/loading/XFace.java:
+  	* src/edu/uci/ece/doc/rtjperf/sys/Makefile:
+
+	 This test check how the time to link-in a class changes depending
+	  on the number of parents, and implemented ifaces.
+
+
 Mon Jan 14 18:58:28 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/loading/Type.java: 
