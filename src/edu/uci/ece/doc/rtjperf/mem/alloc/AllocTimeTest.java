@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: AllocTimeTest.java,v 1.8 2002/10/13 06:28:21 corsaro Exp $
+//    $Id: AllocTimeTest.java,v 1.1 2002/11/30 23:33:52 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -21,7 +21,7 @@
 // *************************************************************************
 //  
 // *************************************************************************
-package edu.uci.ece.doc.rtjperf.mem;
+package edu.uci.ece.doc.rtjperf.mem.alloc;
 
 // -- RTJava Import --
 import javax.realtime.MemoryArea;
@@ -36,6 +36,7 @@ import edu.uci.ece.ac.jargo.*;
 
 // -- RTJPerf Import --
 import edu.uci.ece.doc.rtjperf.util.RTJPerfArgs;
+import edu.uci.ece.doc.rtjperf.mem.MemoryAreaFactory;
 
 /**
  * This test takes care of measuring the time necessary to allocated
@@ -80,7 +81,7 @@ public class AllocTimeTest {
             timer.start();
             timer.stop();
             timer.reset();
-            PerformanceReport report = new PerformanceReport("AllocTime");
+            PerformanceReport report = new PerformanceReport("AllocTime" + this.memType);
             for (int i = 0; i < this.count; ++i) {
                 timer.start();
                 vec = new byte[allocSize];
@@ -89,7 +90,7 @@ public class AllocTimeTest {
                 report.addMeasuredVariable(ALLOC_TIME, timer.getElapsedTime());
             }
             try {
-                report.generateDataFile(AllocTimeTest.outDir + "/AllocTime" + this.memType);
+                report.generateDataFile(AllocTimeTest.outDir);
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();

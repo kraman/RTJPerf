@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: AllocTimeTestHelpHandler.java,v 1.2 2002/11/17 04:06:06 corsaro Exp $
+//    $Id: AllocTimeTestHelpHandler.java,v 1.1 2002/11/30 23:33:52 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -21,7 +21,7 @@
 // *************************************************************************
 //  
 // *************************************************************************
-package edu.uci.ece.doc.rtjperf.mem;
+package edu.uci.ece.doc.rtjperf.mem.alloc;
 
 // -- jTools Import --
 import edu.uci.ece.ac.jargo.HelpHandler;
@@ -29,7 +29,7 @@ import edu.uci.ece.ac.jargo.HelpHandler;
 
 public class AllocTimeTestHelpHandler extends HelpHandler {
     
-    static String msg = "\nUSAGE: The following option are neede for this test: \n\n\n" +
+    static String msg = "\nUSAGE: The following option are needed for this test: \n\n\n" +
         
         "--count <alloc-count>          Sets the number of times the chunck of\n" +
         "                               memory will be allocated.\n\n" + 
@@ -39,7 +39,7 @@ public class AllocTimeTestHelpHandler extends HelpHandler {
         
         "--scopedMemoryType <mem-type>  Sets the scoped memory area type to\n" +
         "                               be used; available option are\n" +
-        "                               \"CTMemory\", \"LTMemory\" and \"VTMemory\"\n\n" +
+        "                               \"LTMemory\", \"VTMemory\" and \"CTMemory\"\n\n" +
 
         "--memSize <size>               Sets the size of the scoped memory in bytes\n\n" +
         

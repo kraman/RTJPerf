@@ -1,3 +1,48 @@
+Sat Nov 30 15:27:15 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/mem/timing/ScopedMemoryTimingTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/mem/timing/ScopedMemoryTimingHelpHandler.java: 
+	* src/edu/uci/ece/doc/rtjperf/mem/timing/Makefile:
+	
+	  Added new test that measures the entry/exit and creation time
+	  for ScopedMemory.
+	
+	* src/python/rtjperf.py: Added Python class that represent the new
+	  test.
+
+	* src/edu/uci/ece/doc/rtjperf/mem/alloc/Makefile: 
+	* src/edu/uci/ece/doc/rtjperf/mem/alloc/AllocTimeTestHelpHandler.java: 
+	* src/edu/uci/ece/doc/rtjperf/mem/alloc/AllocTimeTest.java: 
+
+          File moved here from ../mem.
+ 	
+	* src/edu/uci/ece/doc/rtjperf/mem/runTest.py: 
+	* src/edu/uci/ece/doc/rtjperf/mem/Makefile: 
+	* src/edu/uci/ece/doc/rtjperf/mem/AllocTimeTestHelpHandler.java: 
+	* src/edu/uci/ece/doc/rtjperf/mem/AllocTimeTest.java: 
+
+	  Removed. See following entries.
+	
+	
+	
+	* src/edu/uci/ece/doc/rtjperf/Macros.GNU: Removed dependency from
+	  the libstdc++ since now jRate does not need that anymore.
+	
+	* script/runSMTimingTest.py: Python script that runs the
+	  the ScopedMemory timing test.
+	
+	* script/runAllocTest.py: Python script that runs the
+	  ScopedMemory allocation test
+
+	* script/genSMTimingAnalizer.py: Python script that generates the
+	  octave script for visualizing the result of the ScopedMemory
+	  timing test.
+
+	  
+	* script/analizeATT.sh: Octave script that reads in the data for
+	  the Allocation  Test and displyas the results.
+
+	
 Sat Nov 16 20:12:44 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/mem/AllocTimeTestHelpHandler.java:

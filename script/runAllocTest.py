@@ -1,9 +1,9 @@
 import rtjperf
 
-def runTest():
+def runAllocTest():
 
-    iteration = 1000
-    memSize = 100000 # bytes
+    iteration = 100
+    memSize = 500000 # bytes
     allocSize = 32   # bytes
     while allocSize <= pow(2, 14):
         # create a test for the CTMemory case
@@ -12,7 +12,7 @@ def runTest():
                                           allocSize, 
                                           'CTMemory',
                                           memSize,  
-                                          'Data');
+                                          'SMAllocTime');
         ctmatt.setComment('AllocTimeTest(' +  str(iteration) + ' iter, '
                           + str(allocSize) + ' bytes, '
                           + str(memSize) + ' bytes, ' + 'CTMemory)')
@@ -23,7 +23,7 @@ def runTest():
                                           allocSize, 
                                           'LTMemory',
                                           memSize,  
-                                          'Data');
+                                          'SMAllocTime');
         ltmatt.setComment('AllocTimeTest(' +  str(iteration) + ' iter, '
                           + str(allocSize) + ' bytes, '
                           + str(memSize) + ' bytes, ' + 'LTMemory)')
@@ -38,4 +38,4 @@ def runTest():
     
 
 if __name__ == '__main__':
-    runTest()
+    runAllocTest()
