@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: RTCreationLatencyTest.java,v 1.2 2002/04/24 00:06:09 corsaro Exp $
+//    $Id: RTCreationLatencyTest.java,v 1.3 2003/03/29 19:25:58 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -38,7 +38,7 @@ public class RTCreationLatencyTest  {
         final String path = args[1];
 
         // Plain linux has 90 different prio at most
-        final int MAX_PRIORITY = 90;
+        final int MAX_PRIORITY = 900;
         
         Runnable testLogic = new Runnable() {
                 public void run() {
@@ -83,7 +83,7 @@ public class RTCreationLatencyTest  {
             };
         
         RealtimeThread testThread = new RealtimeThread(new PriorityParameters(MAX_PRIORITY - 10),
-                                                       null, null, null, null, testLogic);
+                                                       null, null, ImmortalMemory.instance(), null, testLogic);
         testThread.start();
     }
 }

@@ -1,23 +1,14 @@
-#
-# $Id: Makefile,v 1.3 2002/03/26 18:46:09 corsaro Exp $
-#
+##########################################################################
+# $Id: Makefile,v 1.4 2003/03/29 19:25:58 corsaro Exp $
+##########################################################################
 
-RTJP_CLASSES = ${RTJP_HOME}/classes
-RTJP_SRC = ${RTJP_HOME}/src
-RTJP_LIB = ${RTJP_HOME}/lib
-RTJP_BIN = ${RTJP_HOME}/bin
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Macros.GNU
 
-GCJ_INCLUDE=$(GCC_HOME)/include
-GCJ_SRC_INCLUDE=$(GCC_SRC_HOME)/libjava/include
-BOEHM_SRC_INCLUDE=$(GCC_HOME)/boehm-gc
-INCLUDE_DIRS = -I$(GCJ_INCLUDE)  -I$(GCJ_SRC_INCLUDE) -I$(BOEHM_SRC_INCLUDE) -I$(RTJAVA_HOME)/src/librtj/include -I$(RTJAVA_HOME)/src/librtj/src 
+TARGET := $(RTJP_HOME)/bin/YieldTest
+MAINCLASS := edu.uci.ece.doc.rtjperf.thread.YieldTest 
 
-# -I$(RTJAVA_HOME)/classes
-all:
-	gcj -O6 -static  -I$(RTJAVA_HOME)/src -I$(RTJP_HOME)/src $(RTJAVA_HOME)/src/javax/realtime/*.java $(RTJAVA_HOME)/src/javax/realtime/util/*.java --main=edu.uci.ece.doc.rtjperf.thread.YieldTest -o $(RTJP_BIN)/yieldTest  ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/thread/YieldTest.java   ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/*.java  ${RTJP_SRC}/edu/uci/ece/doc/util/concurrent/*.java ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/HighResClock.cc $(INCLUDE_DIRS) $(RTJAVA_HOME)/src/librtj/src/*.cc  -lgcj -lgcjgc
+SRCS := $(wildcard $(SRC_DIR)/thread/*.java)
+SRCS += $(wildcard $(SRC_DIR)/util/*.java)
+SRCS += $(wildcard $(SRC_DIR)/sys/*.java)
 
-	gcj -O6 -static  -I$(RTJAVA_HOME)/src -I$(RTJP_HOME)/src $(RTJAVA_HOME)/src/javax/realtime/*.java $(RTJAVA_HOME)/src/javax/realtime/util/*.java --main=edu.uci.ece.doc.rtjperf.thread.CreationLatencyTest -o $(RTJP_BIN)/threadLatencyTest  ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/thread/CreationLatencyTest.java   ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/*.java  ${RTJP_SRC}/edu/uci/ece/doc/util/concurrent/*.java ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/HighResClock.cc $(INCLUDE_DIRS) $(RTJAVA_HOME)/src/librtj/src/*.cc  -lgcj -lgcjgc
-
-	gcj -O6 -static  -I$(RTJAVA_HOME)/src -I$(RTJP_HOME)/src $(RTJAVA_HOME)/src/javax/realtime/*.java $(RTJAVA_HOME)/src/javax/realtime/util/*.java --main=edu.uci.ece.doc.rtjperf.thread.SynchYieldTest -o $(RTJP_BIN)/synchYieldTest  ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/thread/SynchYieldTest.java   ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/*.java  ${RTJP_SRC}/edu/uci/ece/doc/util/concurrent/*.java ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/HighResClock.cc $(INCLUDE_DIRS) $(RTJAVA_HOME)/src/librtj/src/*.cc  -lgcj -lgcjgc
-
-	gcj -O6 -static  -I$(RTJAVA_HOME)/src -I$(RTJP_HOME)/src $(RTJAVA_HOME)/src/javax/realtime/*.java $(RTJAVA_HOME)/src/javax/realtime/util/*.java --main=edu.uci.ece.doc.rtjperf.thread.RTCreationLatencyTest -o $(RTJP_BIN)/rtThreadLatencyTest  ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/thread/RTCreationLatencyTest.java   ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/*.java  ${RTJP_SRC}/edu/uci/ece/doc/util/concurrent/*.java ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/HighResClock.cc $(INCLUDE_DIRS) $(RTJAVA_HOME)/src/librtj/src/*.cc  -lgcj -lgcjgc
+include $(RTJP_HOME)/src/edu/uci/ece/doc/rtjperf/Rules.GNU

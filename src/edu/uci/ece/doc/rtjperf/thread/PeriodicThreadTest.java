@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: PeriodicThreadTest.java,v 1.4 2003/01/04 20:23:20 corsaro Exp $
+//    $Id: PeriodicThreadTest.java,v 1.5 2003/03/29 19:25:58 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -72,20 +72,20 @@ public class PeriodicThreadTest {
         System.out.println("Running Test with Period: " + millis + "ms " + nanos + " ns");
         PeriodicParameters periodicParams =
             new PeriodicParameters(new RelativeTime(0, 0), // Start Time
-                                  period,
-                                  null,   // cost estimate
-                                  period, // deadline == period
-                                  null,   // overrun handler
-                                  null);  // miss handler
-
+                                   period,
+                                   null,   // cost estimate
+                                   period, // deadline == period
+                                   null,   // overrun handler
+                                   null);  // miss handler
+        
         PriorityParameters prioParams =
             new PriorityParameters(PriorityScheduler.MAX_PRIORITY);
-
+        
         RealtimeThread rtThread =
             new RealtimeThread(prioParams, // Sched Params
                                periodicParams, //Release Params
                                null, // mem params
-                               null, // mem area
+                               ImmortalMemory.instance(), // mem area
                                null, // processing group
                                periodicThreadLogic); // logic
 

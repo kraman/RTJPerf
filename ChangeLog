@@ -1,3 +1,15 @@
+Sat Mar 29 13:28:29 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/thread/RTCreationLatencyTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/thread/PeriodicThreadTest.java:
+
+	  Changed test to use immortal memory
+
+Sat Mar 29 13:26:09 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/thread/Makefile: Changed to use
+	  Macros.GNU and Rules.GNU
+
 Sat Jan  4 12:22:12 2003  Angelo Corsaro  <corsaro@ece.uci.edu>
 
 	* script/runTest.py: 
