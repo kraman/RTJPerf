@@ -1,11 +1,11 @@
-<!-- $Id: build.xml,v 1.1 2002/01/13 02:34:55 corsaro Exp $ -->
+<!-- $Id: build.xml,v 1.2 2002/01/16 00:22:05 corsaro Exp $ -->
 
 <project name="RTJPerf Tests Build" default="all" basedir="../../../../../..">
 
    <property file="rtjperf-build-bootstrap.properties"/>
    <property file="rtjperf-build.properties"/>
 
-   <target name="all" depends="sys, util, sched, mem, synch, time, asynch"/>
+   <target name="all" depends="sys, util, sched, mem, synch, time, asynch, loading"/>
 
    <target name="sched" depends="sys">
       <ant antfile="${rtjperf.srcdir}/edu/uci/ece/doc/rtjperf/sched/build.xml"/>
@@ -33,6 +33,10 @@
 
    <target name="sys">
       <ant antfile="${rtjperf.srcdir}/edu/uci/ece/doc/rtjperf/sys/build.xml"/>
+   </target>
+
+   <target name="loading">
+      <ant antfile="${rtjperf.srcdir}/edu/uci/ece/doc/rtjperf/loading/build.xml"/>
    </target>
 
 

@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: EagerClassLoadingTest.java,v 1.2 2002/01/15 17:04:07 corsaro Exp $
+ * $Id: EagerClassLoadingTest.java,v 1.3 2002/01/16 00:22:05 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.loading;
 
@@ -69,12 +69,12 @@ public class EagerClassLoadingTest {
         System.out.println("Time Elapsed: " + timer.getElapsedTime());
 
         timer.start();
-        t = new TypeX();
+        new TypeX();
         timer.stop();
         System.out.println("Time Elapsed: " + timer.getElapsedTime());
 
         timer.start();
-        TenFace tf = new TenFace();
+        new TenFace();
         timer.stop();
         System.out.println("Time Elapsed: " + timer.getElapsedTime());
     }
