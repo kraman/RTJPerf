@@ -1,5 +1,5 @@
 #
-# $Id: rtjperf.py,v 1.3 2002/11/30 23:33:52 corsaro Exp $
+# $Id: rtjperf.py,v 1.4 2002/12/01 04:25:48 corsaro Exp $
 #
 # This module contains the definition for the classes and function used
 # by RTJPerf to run its tests
@@ -71,14 +71,14 @@ class MemAllocTimeTest(RTSPTest):
 #
 # This class defines the ScopedMemory Timing Test
 #
-class MemAllocTimeTest(RTSPTest): 
+class ScopedMemoryTimingTest(RTSPTest): 
     def __init__(self, fileName, iteration, memType, memSize, outDir):
         self.fileName = fileName
         self.iteration = iteration
         self.memType = memType
         self.memSize = memSize
         self.outDir = outDir
-
+        
         self.argList = [self.fileName,
                         '--count', str(self.iteration),
                         '--scopedMemoryType', self.memType,

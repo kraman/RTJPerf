@@ -1,3 +1,22 @@
+Sun Dec  1 03:18:09 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/mem/timing/ScopedMemoryTimingTest.java: 
+
+	  Changed the way the execution time was measured. Now enter and
+	  exit time are not considered.
+	
+	* bin/ScopedMemoryTiming.sh:
+
+	  Script for running the ScopedMemoryTimingTest using the RI.
+	
+	* script/runSMTimingTest.py: Added ability of running the test
+	  by using either jRate or the RI.
+	
+	* script/genSMTimingAnalizer.py: Added new options for printing
+	  more graphs.
+
+	* src/python/rtjperf.py: Eliminated name duplication.
+
 Sat Nov 30 17:18:04 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/mem/timing/ScopedMemoryTimingTest.java:

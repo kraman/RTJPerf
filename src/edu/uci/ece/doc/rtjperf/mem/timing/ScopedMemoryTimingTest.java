@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: ScopedMemoryTimingTest.java,v 1.2 2002/12/01 01:19:01 corsaro Exp $
+//    $Id: ScopedMemoryTimingTest.java,v 1.3 2002/12/01 04:25:48 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -60,12 +60,12 @@ public class ScopedMemoryTimingTest {
         private double field3;
         private double field4;
         
-//         protected void finalize() {
-//             // We don't do anything but, to check if Scoped memory are
-//             // finilizing the object allocated we can print something
-//             // from here.
-//             System.out.print("o");
-//         }
+      //      protected void finalize() {
+        // We don't do anything but, to check if Scoped memory are
+        // finilizing the object allocated we can print something
+        // from here.
+        // System.out.print("o");
+      //      }
     }
 
     static class AllocatorLogic implements Runnable {
@@ -74,11 +74,14 @@ public class ScopedMemoryTimingTest {
         private MemoryArea scopedMemory;
         private HighResTimer timerEnter;
         private HighResTimer timerExit;
-        
+        private HighResTimer timerExec;
+      
         AllocatorLogic(HighResTimer timerEnter,
-                       HighResTimer timerExit) {
+                       HighResTimer timerExit,
+                       HighResTimer timerExec) {
             this.timerEnter = timerEnter;
             this.timerExit = timerExit;
+            this.timerExec = timerExec;
         }
 
         void setScopedMemory(MemoryArea scopedMemory) {
@@ -87,9 +90,11 @@ public class ScopedMemoryTimingTest {
 
         public void run() {
             timerEnter.stop();
+            timerExec.start();
             while (this.scopedMemory.memoryRemaining() > SLACK) {
                 new Item();
             }
+            timerExec.stop();
             timerExit.start();
         }
     }                                              
@@ -116,7 +121,7 @@ public class ScopedMemoryTimingTest {
             PerformanceReport report =
                 new PerformanceReport("ScopedMemoryTiming" + this.memType);
 
-            AllocatorLogic allocatorLogic = new AllocatorLogic(timerEnter, timerExit);
+            AllocatorLogic allocatorLogic = new AllocatorLogic(timerEnter, timerExit, timer);
 
             timerEnter.start();
             timerEnter.stop();
@@ -141,12 +146,12 @@ public class ScopedMemoryTimingTest {
                 timer.reset();
 
                 allocatorLogic.setScopedMemory(memoryArea);
-
-                timer.start();
+                
+                //                timer.start();
                 timerEnter.start();
                 memoryArea.enter(allocatorLogic);
                 timerExit.stop();
-                timer.stop();
+                //                timer.stop();
 
                 report.addMeasuredVariable(ENTER_TIME + memSize, timerEnter.getElapsedTime());
                 timerEnter.reset();
