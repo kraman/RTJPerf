@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: ScopedMemoryTypeValidator.java,v 1.1 2002/04/17 00:00:55 corsaro Exp $
+//    $Id: ScopedMemoryTypeValidator.java,v 1.2 2002/10/13 06:08:05 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -35,7 +35,7 @@ import edu.uci.ece.ac.jargo.InvalidArgumentValueException;
  */
 public class ScopedMemoryTypeValidator implements Validator {
 
-    private static final String[] SCOPED_MEM_AREA_TYPE = {"LTMemory", "VTMemory", "CTMemory"};
+    private static final String[] SCOPED_MEM_AREA_TYPE = { "CTMemory", "LTMemory", "VTMemory"};
     
     public Object validate(String argValue) throws InvalidArgumentValueException {
         int index = -1;

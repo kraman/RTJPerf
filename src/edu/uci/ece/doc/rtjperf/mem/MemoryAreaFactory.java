@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: MemoryAreaFactory.java,v 1.2 2002/04/16 20:19:07 corsaro Exp $
+//    $Id: MemoryAreaFactory.java,v 1.3 2002/10/13 06:08:05 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -37,7 +37,7 @@ public class MemoryAreaFactory {
     public static MemoryArea createMemoryArea(long minSize, long maxSize, int type) {
         switch (type) {
         case CT:
-            return new CTMemoryArea(maxSize);
+            return new CTMemoryArea(minSize, maxSize);
         case LT:
             return new LTMemory(minSize, maxSize);
         case VT:

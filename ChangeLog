@@ -1,3 +1,16 @@
+Sat Oct 12 23:06:02 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/mem/MemoryAreaFactory.java:
+
+	  Changed constructor of the CTMemoryArea to be the one that looks
+	  like the standard one for regular scoped memory. 
+	  
+
+	* src/edu/uci/ece/doc/rtjperf/util/ScopedMemoryTypeValidator.java: 
+
+	  Fixed problem order in the declaration of the string associated to the
+	  different type of memory.
+
 Fri Jul 12 18:02:19 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
 
 	* bin/runTest: Changed script to reflect the fact that now RTJPerf
