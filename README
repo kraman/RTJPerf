@@ -1,0 +1,5 @@
+RTJPerf is a collection of test that are meant to measure the
+performances of any Real-Time Java JVM. To avoid that the measurement
+made are dependent on the resolution of time provided by the
+underlying JVM, RTJPerf uses its own high resolution APIs.
+

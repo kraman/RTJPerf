@@ -1,0 +1,21 @@
+Sat Dec 29 11:58:25 2001  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* build.xml:
+
+	  Added target to delete the automatically generated files on a "clean"
+
+	* src/edu/uci/ece/doc/rtjperf/sys/HighResClock.java: 
+	* src/edu/uci/ece/doc/rtjperf/sys/edu_uci_ece_doc_rtjperf_sys_HighResClock.cpp: 
+	* src/edu/uci/ece/doc/rtjperf/sys/HighResClock.cc: 
+	* src/edu/uci/ece/doc/rtjperf/sys/Makefile:
+
+	  Removed use of ACE High_Res_Time. Linking ACE causes the RTJS RI
+	  to segfault. Now <gettimeofday> is used.
+
+Tue Dec 25 17:40:10 2001  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/sys/build.xml: Added target to
+	  automatically run the makefile to create the gcj executables.
+
+	* src/build.xml: Added target for building the sys package.
+
