@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: CreationLatencyTest.java,v 1.1 2002/03/07 04:44:07 corsaro Exp $
+ * $Id: CreationLatencyTest.java,v 1.2 2002/03/26 18:46:09 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.thread;
 
@@ -11,6 +11,7 @@ import javax.realtime.*;
 public class CreationLatencyTest  {
     final static String CREATION_LATENCY = "CreationLatency";
     final static String STARTUP_LATENCY = "StartupLatency";
+    final static int MAX_PRIORITY = 90;
     public static void main(String[] args) throws Exception {
 
         int count = Integer.parseInt(args[0]);
@@ -27,7 +28,7 @@ public class CreationLatencyTest  {
                 }
             };
         RealtimeThread rtThread = null;
-        SchedulingParameters schedParam = new PriorityParameters(PriorityScheduler.MAX_PRIORITY);
+        SchedulingParameters schedParam = new PriorityParameters(MAX_PRIORITY);
         for (int i = 0; i < count; i++) {
             timer.start();
             rtThread = new RealtimeThread(null, null, null, null, null, logic);

@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: YieldTest.java,v 1.1 2002/03/07 04:44:07 corsaro Exp $
+ * $Id: YieldTest.java,v 1.2 2002/03/26 18:46:09 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.thread;
 
@@ -41,13 +41,15 @@ public class YieldTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
+            
             while (this.yieldCount < this.count) {
                 this.timer.stop();
                 this.yieldCount++;
                 
                 //                System.out.println(name + "  Executing\t" + yieldCount);
                 //                System.out.flush();
+                
+                // Reach steady state before measuring...
                 if (this.yieldCount >= 10)
                     report.addMeasuredVariable(YIELD_LATENCY, timer.getElapsedTime());
                 
@@ -106,7 +108,7 @@ public class YieldTest {
     public static void main(String[] args) throws Exception {
         final int count = Integer.parseInt(args[0]) + 10;
         final String path = args[1];
-        int priority = PriorityScheduler.MAX_PRIORITY;
+        int priority = 90;
         MainYieldLogic logic = new MainYieldLogic(count, priority, path);
         RealtimeThread rtThread = new RealtimeThread(new PriorityParameters(priority),
                                                      null,  null, null, null, logic);

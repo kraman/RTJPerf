@@ -1,18 +1,17 @@
 /*-------------------------------------------------------------------------*
- * $Id: SynchYieldTest.java,v 1.4 2002/03/26 18:46:09 corsaro Exp $
+ * $Id: SynchYieldTest.java,v 1.1 2002/03/26 18:46:09 corsaro Exp $
  *-------------------------------------------------------------------------*/
 
-package edu.uci.ece.doc.rtjperf.thread;
+package edu.uci.ece.doc.rtjperf.thread.plain;
 
 import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
 import edu.uci.ece.doc.rtjperf.sys.HighResTime;
 import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
 import edu.uci.ece.doc.util.concurrent.EventVariable;
-import javax.realtime.*;
 
 public class SynchYieldTest {
 
-    static final String SYNCH_YIELD_TIME = "SynchYieldTime";
+    static final String SYNCH_YIELD_TIME = "SynchYieldTimeTest";
     
     static class Synchornizer {
         
@@ -58,7 +57,7 @@ public class SynchYieldTest {
         
     }
     public static void main(String args[]) throws Exception {
-        int MAX_PRIORITY = 90;
+
         final int count = Integer.parseInt(args[0]);
         final EventVariable exitEvent = new EventVariable();
         final EventVariable nextIterationEvent = new EventVariable();
@@ -110,23 +109,15 @@ public class SynchYieldTest {
                 }
                 
             };
+        
+        Thread lowPrio =
+            new Thread(lowPrioLogic);
 
-        RealtimeThread lowPrio =
-            new RealtimeThread(new PriorityParameters(MAX_PRIORITY - 5),
-                               null,
-                               null,
-                               null,
-                               null,
-                               lowPrioLogic);
+        lowPrio.setPriority(Thread.MAX_PRIORITY - 3);
+        Thread highPrio =
+            new Thread(highPrioLogic);
 
-        RealtimeThread highPrio =
-            new RealtimeThread(new PriorityParameters(MAX_PRIORITY),
-                               null,
-                               null,
-                               null,
-                               null,
-                               highPrioLogic);
-
+        highPrio.setPriority(Thread.MAX_PRIORITY);
         lowPrio.start();
         highPrio.start();
     }

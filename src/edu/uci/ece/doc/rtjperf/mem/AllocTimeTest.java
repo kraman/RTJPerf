@@ -1,18 +1,19 @@
 /*-------------------------------------------------------------------------*
- * $Id: AllocTimeTest.java,v 1.5 2002/03/19 07:14:47 corsaro Exp $
+ * $Id: AllocTimeTest.java,v 1.6 2002/03/26 18:46:09 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.mem;
 
 // -- RTJava Import --
 import javax.realtime.MemoryArea;
-//import javax.realtime.LTMemory;
-//import javax.realtime.VTMemory;
+import javax.realtime.LTMemory;
+import javax.realtime.VTMemory;
 import javax.realtime.RealtimeThread;
 import javax.realtime.CTMemoryArea;
 import javax.realtime.PriorityParameters;
 
 // -- RTJPerf Import --
 import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
+import edu.uci.ece.doc.rtjperf.sys.HighResClock;
 import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
 
 /**
@@ -53,10 +54,12 @@ public class AllocTimeTest {
             System.out.println("---------------------> Test Started <------------------ ");
             HighResTimer timer = new HighResTimer();
             byte[] vec;
-            PerformanceReport report = new PerformanceReport(reportName);
+            long start, stop;
+            timer.start();
+            timer.stop();
+            timer.reset();
+            PerformanceReport report = new PerformanceReport("AllocTime");
             for (int i = 0; i < this.count; ++i) {
-                //                System.out.println(this.memArea.memoryConsumed());
-                
                 timer.start();
                 vec = new byte[allocSize];
                 timer.stop();
@@ -64,7 +67,7 @@ public class AllocTimeTest {
                 report.addMeasuredVariable(ALLOC_TIME, timer.getElapsedTime());
             }
             try {
-                report.generateDataFile("/home/angelo/Devel/RTJPerf/Data" + this.memType);
+                report.generateDataFile("/home/angelo/Devel/RTJPerf/AllocTime" + this.memType);
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
@@ -72,13 +75,14 @@ public class AllocTimeTest {
             System.out.println("---------------------> Test Completed <------------------ ");
         }
     }
-
-
+    
+    
     public static void main(String[] args) throws Exception {
         final int count = Integer.parseInt(args[0]);
         final int allocSize = Integer.parseInt(args[1]);
         final int memType = Integer.parseInt(args[2]);
-        long memSize = 100 * allocSize * count + count * 500000;
+        long memSize = (allocSize * 4 * count) + (18 * count * 4096); // + count * 500000;
+        System.out.println("Allocating: " + memSize);
         final MemoryArea memArea = MemoryAreaFactory.createMemoryArea(memSize, memSize, memType);
 
         RealtimeThread rt = new RealtimeThread() {
@@ -92,7 +96,7 @@ public class AllocTimeTest {
                     memArea.enter(logic);
                 }
             };
-        rt.setSchedulingParameters(new PriorityParameters(90));
+        rt.setSchedulingParameters(new PriorityParameters(30));
         rt.start();
     }
 }            
