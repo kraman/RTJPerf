@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: EventHandlerLogic.java,v 1.3 2002/04/16 19:12:52 corsaro Exp $
+//    $Id: EventHandlerLogic.java,v 1.4 2002/12/13 08:55:47 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -65,6 +65,7 @@ public class EventHandlerLogic implements Runnable {
     }
 
     public final void run() {
+        System.out.println("###>> EventHandlerLogic: Run Started");
         timer.stop();
         if (!this.memProfiling) 
             performanceReport.addMeasuredVariable(DISPATCH_DELAY, timer.getElapsedTime());
@@ -74,6 +75,8 @@ public class EventHandlerLogic implements Runnable {
         }
         timer.reset();
         eventVar.signal();
+        
+        System.out.println("###>> EventHandlerLogic: Run Done");
     }
 }
 
