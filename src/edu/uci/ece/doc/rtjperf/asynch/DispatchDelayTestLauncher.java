@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: DispatchDelayTestLauncher.java,v 1.8 2002/12/13 08:55:47 corsaro Exp $
+//    $Id: DispatchDelayTestLauncher.java,v 1.9 2002/12/13 09:21:11 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -167,7 +167,7 @@ public class DispatchDelayTestLauncher {
                                                               this.logic);
             */
             PooledExecutor executor = new PooledExecutor(3,
-                                                         this.schedParams,
+                                                         new PriorityParameters(this.handlerPriority),
                                                          this.releaseParams,
                                                          this.memoryParams,
                                                          this.memoryArea,
@@ -265,8 +265,10 @@ public class DispatchDelayTestLauncher {
             memType =
                 (String)argParser.getArg(RTJPerfArgs.MEMORY_AREA_OPT.getName()).getValue();
         
-        final MemoryArea memoryArea = SingletonMemoryAreaAccessor.instance(memType);
+        final ScopedMemory memoryArea = new CTMemory(50000000);
         argParser = null;
+        // final MemoryArea memoryArea = SingletonMemoryAreaAccessor.instance(memType);
+        //        argParser = null;
         
         // This thread is used to guarantee that all the memory
         // allocated during the test is allocated out of the type of

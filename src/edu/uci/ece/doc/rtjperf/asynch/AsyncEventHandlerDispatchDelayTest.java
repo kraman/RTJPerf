@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: AsyncEventHandlerDispatchDelayTest.java,v 1.6 2002/12/13 08:55:47 corsaro Exp $
+//    $Id: AsyncEventHandlerDispatchDelayTest.java,v 1.7 2002/12/13 09:21:11 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -95,18 +95,18 @@ public class AsyncEventHandlerDispatchDelayTest extends PerformanceTestCase {
 
     protected void runLogic() {
         this.timer.start();
-        System.out.println("Firing Event");
+        //        System.out.println("Firing Event");
         event.fire();
-        System.out.println("Event Fired ");
+        //        System.out.println("Event Fired ");
         try {
-            System.out.println("Waiting on Event Variable");
+            //            System.out.println("Waiting on Event Variable");
             eventVar.await();
             // The following wait is necessary to force the
             // termination of the thread that was used to run the
             // handler, when the test is run on plain Linux instead
             // of Linux RT.
 
-            System.out.println("Waiting on Event Variable 1 ms");
+            //            System.out.println("Waiting on Event Variable 1 ms");
             eventVar.await(1);
             //            Thread.currentThread()
         }
