@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: DispatchDelayTestLauncher.java,v 1.9 2002/12/13 09:21:11 corsaro Exp $
+//    $Id: DispatchDelayTestLauncher.java,v 1.10 2002/12/13 10:45:39 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -34,8 +34,8 @@ import edu.uci.ece.doc.rtjperf.util.*;
 import javax.realtime.AsyncEventHandler;
 import javax.realtime.AsyncEvent;
 import javax.realtime.BoundAsyncEventHandler;
-import javax.realtime.PooledAsyncEventHandler;
-import javax.realtime.util.PooledExecutor;
+// import javax.realtime.PooledAsyncEventHandler;
+// import javax.realtime.util.PooledExecutor;
 import javax.realtime.SchedulingParameters;
 import javax.realtime.ReleaseParameters;
 import javax.realtime.MemoryParameters;
@@ -157,7 +157,6 @@ public class DispatchDelayTestLauncher {
                                                              this.logic);
         }
         else {
-            /*
             this.eventHandler = new ThreadedAsyncEventHandler(this.schedParams,
                                                               this.releaseParams,
                                                               this.memoryParams,
@@ -165,7 +164,7 @@ public class DispatchDelayTestLauncher {
                                                               this.procGroupParams,
                                                               this.noHeap,
                                                               this.logic);
-            */
+            /*
             PooledExecutor executor = new PooledExecutor(3,
                                                          new PriorityParameters(this.handlerPriority),
                                                          this.releaseParams,
@@ -182,7 +181,9 @@ public class DispatchDelayTestLauncher {
                                                             this.noHeap,
                                                             this.logic,
                                                             executor);
+            
             executor = null;
+            */
         }
 
         int testThreadPriority;
