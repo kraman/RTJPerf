@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: ScopedMemoryTimingTest.java,v 1.1 2002/11/30 23:33:52 corsaro Exp $
+//    $Id: ScopedMemoryTimingTest.java,v 1.2 2002/12/01 01:19:01 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -27,6 +27,7 @@ package edu.uci.ece.doc.rtjperf.mem.timing;
 import javax.realtime.MemoryArea;
 import javax.realtime.RealtimeThread;
 import javax.realtime.PriorityParameters;
+import javax.realtime.ImmortalMemory;
 
 // -- jTools Import --
 import edu.uci.ece.ac.time.HighResTimer;
@@ -52,7 +53,7 @@ public class ScopedMemoryTimingTest {
     final static String EXIT_TIME = "ExitTime";
     final static String EXEC_TIME = "ExecTime";
     
-    class Item {
+    static class Item {
         private double field0;
         private double field1;
         private double field2;
@@ -67,7 +68,7 @@ public class ScopedMemoryTimingTest {
 //         }
     }
 
-    class AllocatorLogic implements Runnable {
+    static class AllocatorLogic implements Runnable {
 
         private final int SLACK = 1024;
         private MemoryArea scopedMemory;
@@ -93,7 +94,7 @@ public class ScopedMemoryTimingTest {
         }
     }                                              
     
-    class TestLogic implements Runnable {
+    static class TestLogic implements Runnable {
 
         private int count;
         private long memSize;
@@ -195,9 +196,9 @@ public class ScopedMemoryTimingTest {
         String outDir = (String)argParser.getArg(RTJPerfArgs.OUT_DIR_OPT).getValue();
 
         TestLogic testLogic = new TestLogic(count,
-                                            memSize,
-                                            memType,
-                                            outDir);
+                          memSize,
+                          memType,
+                          outDir);
         
         RealtimeThread rtThread =
             new RealtimeThread(new PriorityParameters(30),
