@@ -1,9 +1,9 @@
 /*-------------------------------------------------------------------------*
- * $Id: EagerClassLoadingTest.java,v 1.3 2002/01/16 00:22:05 corsaro Exp $
+ * $Id: EagerClassLoadingTest.java,v 1.4 2002/04/17 00:00:55 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.loading;
 
-import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
+import edu.uci.ece.ac.time.HighResTimer;
 
 
 /**

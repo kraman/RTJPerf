@@ -1,8 +1,9 @@
 /*-------------------------------------------------------------------------*
- * $Id: PerformanceTestCase.java,v 1.1 2002/01/09 03:15:21 corsaro Exp $
+ * $Id: PerformanceTestCase.java,v 1.2 2002/04/17 00:00:55 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.sys;
 
+import edu.uci.ece.ac.time.*;
 
 /**
  * This class provide a base class for all the performance testcases. 

@@ -1,13 +1,13 @@
 /*-------------------------------------------------------------------------*
- * $Id: PrioInvTest.java,v 1.1 2002/03/26 18:46:09 corsaro Exp $
+ * $Id: PrioInvTest.java,v 1.2 2002/04/17 00:00:55 corsaro Exp $
  *-------------------------------------------------------------------------*/
 
 package edu.uci.ece.doc.rtjperf.synch;
 
-import edu.uci.ece.doc.rtjperf.sys.HighResTimer;
-import edu.uci.ece.doc.rtjperf.sys.HighResTime;
-import edu.uci.ece.doc.rtjperf.sys.PerformanceReport;
-import edu.uci.ece.doc.util.concurrent.EventVariable;
+import edu.uci.ece.ac.time.HighResTimer;
+import edu.uci.ece.ac.time.HighResTime;
+import edu.uci.ece.ac.time.PerformanceReport;
+import edu.uci.ece.ac.concurrent.EventVariable;
 import javax.realtime.*;
 
 /**

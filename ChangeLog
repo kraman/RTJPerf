@@ -1,3 +1,26 @@
+Tue Apr 16 13:18:12 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/mem/plain/AllocTimeTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/mem/MemoryAreaFactory.java: 
+	* src/edu/uci/ece/doc/rtjperf/mem/AllocTimeTest.java: 
+	* src/edu/uci/ece/doc/rtjperf/mem/AllocTimeTestHelpHandler.java: 
+
+	  Changed test to use jargo.
+
+Tue Apr 16 12:11:45 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/asynch/build.xml: 
+	* src/edu/uci/ece/doc/rtjperf/asynch/ThreadBoundAsynchHandler.java: 
+	* src/edu/uci/ece/doc/rtjperf/asynch/TestHelpHandler.java: 
+	* src/edu/uci/ece/doc/rtjperf/asynch/EventHandlerLogic.java: 
+	* src/edu/uci/ece/doc/rtjperf/asynch/DispatchDelayTestLauncher.java: 
+
+	  Made change needed in order to have the test use jTools.
+	
+Tue Apr 16 12:11:36 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/asynch/AsyncEventHandlerDispatchDelayTest.java: 
+
 Mon Mar 18 23:25:15 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* VERSION: Added a version file

@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: MemoryTypeArgumentValidator.java,v 1.2 2002/04/17 00:00:55 corsaro Exp $
+//    $Id: ScopedMemoryTypeValidator.java,v 1.1 2002/04/17 00:00:55 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -33,23 +33,22 @@ import edu.uci.ece.ac.jargo.InvalidArgumentValueException;
  * @author <a href="mailto:corsaro@doc.ece.uci.edu">Angelo Corsaro</a>
  * @version 1.0
  */
-public class MemoryTypeArgumentValidator implements Validator {
+public class ScopedMemoryTypeValidator implements Validator {
 
-    private static final String[] MEM_AREA_TYPE = {"immortal", "heap", "scoped"};
+    private static final String[] SCOPED_MEM_AREA_TYPE = {"LTMemory", "VTMemory", "CTMemory"};
     
     public Object validate(String argValue) throws InvalidArgumentValueException {
-        boolean notValid = true;
-        
-        for (int i = 0; i < MEM_AREA_TYPE.length; ++i) {
-            if (argValue.equals(MEM_AREA_TYPE[i])) {
-                notValid = false;
+        int index = -1;
+        for (int i = 0; i < SCOPED_MEM_AREA_TYPE.length; ++i) {
+            if (argValue.equals(SCOPED_MEM_AREA_TYPE[i])) {
+                index = i;
                 break;
             }
         }
         
-        if (notValid)
-            throw new InvalidArgumentValueException(argValue + " Is not a valid memory type!");
+        if (index == -1)
+            throw new InvalidArgumentValueException(argValue + " Is not a valid scoped memory type!");
 
-        return argValue;
+        return new Integer(index);
     }
 }

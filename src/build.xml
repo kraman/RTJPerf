@@ -1,15 +1,11 @@
-<!-- $Id: build.xml,v 1.3 2002/02/25 21:28:08 corsaro Exp $ -->
+<!-- $Id: build.xml,v 1.4 2002/04/17 00:00:55 corsaro Exp $ -->
 
 <project name="RTJPerf Source Build" default="all" basedir="..">
 
    <property file="rtjperf-build-bootstrap.properties"/>
    <property file="rtjperf-build.properties"/>
 
-   <target name="all" depends="doc,rtjperf"/>
-
-   <target name="doc">
-      <ant antfile="${rtjperf.srcdir}/edu/uci/ece/doc/build.xml"/>
-   </target>
+   <target name="all" depends="rtjperf"/>
 
    <target name="javax-realtime">
       <ant antfile="${rtjperf.srcdir}/javax/realtime/build.xml"/>

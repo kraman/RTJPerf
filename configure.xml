@@ -1,4 +1,4 @@
-<!-- $Id: configure.xml,v 1.1 2002/01/09 03:15:20 corsaro Exp $ -->
+<!-- $Id: configure.xml,v 1.2 2002/04/17 00:00:55 corsaro Exp $ -->
 
 <!--+
     |
@@ -11,7 +11,7 @@
     |
     | File: configure.xml
     | Author: Angelo Corsaro <corsaro@doc.ece.uci.edu>
-    | $Revision: 1.1 $
+    | $Revision: 1.2 $
     |
     |
     | NOTE: Some part of this file is "mis-indented" on purpose
@@ -53,10 +53,6 @@ rtjperf.gendir = ${new.rtjperf.basedir}/src/generated
 rtjperf.classdir = ${new.rtjperf.basedir}/classes
 rtjperf.libdir = ${new.rtjperf.basedir}/lib
 rtjperf.classpath = ${rtjperf.classdir}:${java.class.path}
-rtjperf.win.exec = rtjperf.bat
-idl.win.exec = idlc.bat
-rtjperf.unix.exec = rtjperf.sh
-idl.unix.exec = idlc.sh
 
 #
 # Module properties
