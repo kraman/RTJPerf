@@ -1,3 +1,9 @@
+Fri Jul 12 17:57:58 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/timer/PeriodicTimerTest.java:
+
+	  Removed "println" statement
+
 Tue Apr 23 16:59:21 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* src/javax/realtime/build.xml: 

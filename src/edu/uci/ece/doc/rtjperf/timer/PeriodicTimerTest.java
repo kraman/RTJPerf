@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: PeriodicTimerTest.java,v 1.3 2002/04/24 00:06:09 corsaro Exp $
+//    $Id: PeriodicTimerTest.java,v 1.4 2002/07/13 00:59:01 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -55,9 +55,7 @@ public class PeriodicTimerTest {
                     timer.reset();
                     fireCount++;
                     timer.start();
-                    // System.out.println("FireCount: " + fireCount);
                     if (fireCount == count) {
-                        // System.out.println("Signaling event variable");
                         event.signal();
                     }
                 }
@@ -74,9 +72,8 @@ public class PeriodicTimerTest {
         ptimer.enable();
         timer.start();
         ptimer.start();
-
+        
         try {
-            System.out.println("Waiting on event variable...");
             event.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
