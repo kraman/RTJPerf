@@ -1,4 +1,7 @@
-Fri Jul 12 17:57:58 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+Fri Jul 12 18:02:19 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* bin/runTest: Changed script to reflect the fact that now RTJPerf
+	  relies on jTools.
 
 	* src/edu/uci/ece/doc/rtjperf/timer/PeriodicTimerTest.java:
 
