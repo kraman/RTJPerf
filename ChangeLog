@@ -5,8 +5,6 @@ Sat Mar 29 13:28:29 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
 
 	  Changed test to use immortal memory
 
-Sat Mar 29 13:26:09 2003  Angelo Corsaro  <corsaro@cse.wustl.edu>
-
 	* src/edu/uci/ece/doc/rtjperf/thread/Makefile: Changed to use
 	  Macros.GNU and Rules.GNU
 
