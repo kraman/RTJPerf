@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: DispatchDelayTestLauncher.java,v 1.11 2002/12/13 11:04:55 corsaro Exp $
+//    $Id: DispatchDelayTestLauncher.java,v 1.12 2002/12/13 19:36:58 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -217,7 +217,7 @@ public class DispatchDelayTestLauncher {
                                                                             this.procGroupParams,
                                                                             this.noHeap,
                                                                             noOpLogic);
-
+            
             System.out.println("LPH : " + handlerNum);
             System.out.println("Events : " + this.fireCount);
             for (int i = 0; i < handlerNum; ++i) 
@@ -248,7 +248,7 @@ public class DispatchDelayTestLauncher {
         // -- Required Args --
         spec.addRequiredArg(RTJPerfArgs.OUT_DIR_OPT);
         spec.addRequiredArg(RTJPerfArgs.FIRE_COUNT_OPT);
-
+        
         // -- Optional Args --
         spec.addArg(RTJPerfArgs.THREAD_BOUND_OPT);
         spec.addArg(RTJPerfArgs.MEMORY_AREA_OPT);

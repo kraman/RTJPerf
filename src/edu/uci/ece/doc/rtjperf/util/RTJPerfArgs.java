@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: RTJPerfArgs.java,v 1.3 2002/04/17 00:00:55 corsaro Exp $
+//    $Id: RTJPerfArgs.java,v 1.4 2002/12/13 19:36:58 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -108,7 +108,7 @@ public class RTJPerfArgs {
                     NATURAL_NUM_VALIDATOR);
 
     public static final ArgSpec LP_ASYNC_HANDLER_PRIORITY_OPT =
-        new ArgSpec(LP_ASYNC_HANDLER_NUMBER_STR,
+        new ArgSpec(LP_ASYNC_HANDLER_PRIORITY_STR,
                     PRIORITY_VALIDATOR);
 
     public static final ArgSpec MEM_SIZE_OPT =
