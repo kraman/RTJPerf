@@ -1,3 +1,11 @@
+Sat Oct 12 23:26:14 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/mem/AllocTimeTest.java: Changed
+	  comment printend out to be more descriptive, and removed some
+	  unnecessary imports.
+	
+	* src/edu/uci/ece/doc/rtjperf/mem/Makefile: jRate Makefile. 
+
 Sat Oct 12 23:06:02 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/mem/MemoryAreaFactory.java:

@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: AllocTimeTest.java,v 1.7 2002/04/16 20:19:07 corsaro Exp $
+//    $Id: AllocTimeTest.java,v 1.8 2002/10/13 06:28:21 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -25,10 +25,7 @@ package edu.uci.ece.doc.rtjperf.mem;
 
 // -- RTJava Import --
 import javax.realtime.MemoryArea;
-import javax.realtime.LTMemory;
-import javax.realtime.VTMemory;
 import javax.realtime.RealtimeThread;
-import javax.realtime.CTMemoryArea;
 import javax.realtime.PriorityParameters;
 
 // -- jTools Import --
@@ -130,7 +127,7 @@ public class AllocTimeTest {
         value = (Integer)argParser.getArg(RTJPerfArgs.MEM_SIZE_OPT).getValue();
         long memSize = value.intValue();
 
-        System.out.println("Allocating Memory area of: " + memSize + " bytes");
+        System.out.println("Allocating Memory area type " + memType + " of: " + memSize + " bytes");
         final MemoryArea memArea = MemoryAreaFactory.createMemoryArea(memSize, memSize, memType);
 
         AllocTimeTest.outDir = (String)argParser.getArg(RTJPerfArgs.OUT_DIR_OPT).getValue();
