@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: DispatchDelayTestLauncher.java,v 1.6 2002/04/16 19:12:52 corsaro Exp $
+//    $Id: DispatchDelayTestLauncher.java,v 1.7 2002/10/16 19:19:26 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -47,7 +47,7 @@ import javax.realtime.HeapMemory;
 import javax.realtime.AperiodicParameters;
 import javax.realtime.RealtimeThread;
 import javax.realtime.ThreadedAsyncEventHandler;
-import javax.realtime.CTMemoryArea;
+import javax.realtime.CTMemory;
 import javax.realtime.ScopedMemory;
 
 import edu.uci.ece.doc.rtjperf.sys.*;

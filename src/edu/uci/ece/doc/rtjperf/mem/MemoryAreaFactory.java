@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: MemoryAreaFactory.java,v 1.3 2002/10/13 06:08:05 corsaro Exp $
+//    $Id: MemoryAreaFactory.java,v 1.4 2002/10/16 19:19:26 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -26,7 +26,7 @@ package edu.uci.ece.doc.rtjperf.mem;
 import javax.realtime.MemoryArea;
 import javax.realtime.LTMemory;
 import javax.realtime.VTMemory;
-import javax.realtime.CTMemoryArea;
+import javax.realtime.CTMemory;
 
 public class MemoryAreaFactory {
 
@@ -37,7 +37,7 @@ public class MemoryAreaFactory {
     public static MemoryArea createMemoryArea(long minSize, long maxSize, int type) {
         switch (type) {
         case CT:
-            return new CTMemoryArea(minSize, maxSize);
+            return new CTMemory(minSize, maxSize);
         case LT:
             return new LTMemory(minSize, maxSize);
         case VT:

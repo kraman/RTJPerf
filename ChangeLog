@@ -1,3 +1,20 @@
+Wed Oct 16 12:16:53 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* src/javax/realtime/CTMemory.java: Added. 
+
+	* src/javax/realtime/CTMemoryArea.java: Removed.
+
+	* src/edu/uci/ece/doc/rtjperf/mem/MemoryAreaFactory.java: 
+	* src/edu/uci/ece/doc/rtjperf/asynch/DispatchDelayTestLauncher.java: 
+
+	  Replaced occurence of CTMemoryArea with CTMemory.
+	
+Mon Oct 14 18:22:56 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/mem/MemoryAreaFactory.java:
+
+	  Changed occurence of CTMemoryArea to CTMemory.
+
 Sat Oct 12 23:26:14 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/mem/AllocTimeTest.java: Changed
