@@ -76,6 +76,7 @@ def genCTTimingAnalizer():
     genReadKey("...", octaveScript)
     octaveScript.write('\nhold off \n\n')
     genLogPlotCode('CreationTime1', octaveScript)
+    genReadKey("...", octaveScript)
     octaveScript.write('\nhold off \n\n')
     genLogPlotCode('CreationTime2', octaveScript)
 
