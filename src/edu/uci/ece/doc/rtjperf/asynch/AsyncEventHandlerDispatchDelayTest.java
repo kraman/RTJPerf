@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: AsyncEventHandlerDispatchDelayTest.java,v 1.3 2002/02/12 20:57:54 corsaro Exp $
+ * $Id: AsyncEventHandlerDispatchDelayTest.java,v 1.4 2002/03/07 04:44:07 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.asynch.timing;
 
@@ -31,7 +31,7 @@ public class AsyncEventHandlerDispatchDelayTest extends PerformanceTestCase {
 
     private final HighResTimer timer;
     private final AsyncEvent event;
-    private final EventVariable eventVar;
+    private  EventVariable eventVar;
     private final int fireCount;
     private RealtimeThread thread;
     private final MemoryArea memoryArea;
@@ -40,6 +40,7 @@ public class AsyncEventHandlerDispatchDelayTest extends PerformanceTestCase {
     private int profilingStep;
     
     public AsyncEventHandlerDispatchDelayTest(AsyncEventHandler eventHandler,
+                                              AsyncEvent event,
                                               EventHandlerLogic logic,
                                               int fireCount,
                                               SchedulingParameters schedParams,
@@ -51,7 +52,7 @@ public class AsyncEventHandlerDispatchDelayTest extends PerformanceTestCase {
         super("AsynchEventHandlerDelayTest",
               "This test measure the delay incurred in the notification of a AsynchEventHandler");
         this.timer = new HighResTimer();
-        this.event = new AsyncEvent();
+        this.event = event;
         this.eventVar = new EventVariable();
         this.fireCount = fireCount;
         this.memoryArea = memoryArea;

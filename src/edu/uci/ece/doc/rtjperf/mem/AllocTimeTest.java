@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: AllocTimeTest.java,v 1.3 2002/02/25 21:28:08 corsaro Exp $
+ * $Id: AllocTimeTest.java,v 1.4 2002/03/07 04:44:07 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.mem;
 
@@ -26,28 +26,30 @@ public class AllocTimeTest {
 
     static class MemAllocatorLogic implements Runnable {
 
-        public static String ALLOC_TIME;// = "AllocTime";
+        public static String ALLOC_TIME;
 
         private int count;
-        private int allocRate;
+        private int allocSize;
         private String reportName;
         private MemoryArea memArea;
+        private int memType;
         
-        public MemAllocatorLogic(int count, int allocRate,
+        public MemAllocatorLogic(int count, int allocSize,
                                  MemoryArea memArea,
                                  String reportName,
-                                 String varName) {
+                                 String varName,
+                                 int memType) {
  
             this.count = count;
-            this.allocRate = allocRate;
+            this.allocSize = allocSize;
             this.reportName = reportName;
             this.memArea = memArea;
             this.ALLOC_TIME = varName;
+            this.memType = memType;
         }
            
         public void run() {
-            System.out.println("---------------------> Starting <------------------ ");
-            //            String ALLOC_TIME = new String("AllocTime");
+            System.out.println("---------------------> Test Started <------------------ ");
             HighResTimer timer = new HighResTimer();
             byte[] vec;
             PerformanceReport report = new PerformanceReport(reportName);
@@ -55,69 +57,43 @@ public class AllocTimeTest {
                 //                System.out.println(this.memArea.memoryConsumed());
                 
                 timer.start();
-                vec = new byte[allocRate];
+                vec = new byte[allocSize];
                 timer.stop();
                 vec = null;
                 report.addMeasuredVariable(ALLOC_TIME, timer.getElapsedTime());
-                //                System.out.println(timer.getElapsedTime());
-                //                System.out.print(i + ", ");
             }
             try {
-                //                System.out.println("Report Name: " + reportName);
-                
-                report.generateDataFile("/home/angelo/Devel/RTJPerf/Data");
-                //                System.out.println("Variable Name: " + ALLOC_TIME);
+                report.generateDataFile("/home/angelo/Devel/RTJPerf/Data" + this.memType);
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("---------------------> Done <------------------ ");
+            System.out.println("---------------------> Test Completed <------------------ ");
         }
     }
 
 
     public static void main(String[] args) throws Exception {
         final int count = Integer.parseInt(args[0]);
-        final int allocRate = Integer.parseInt(args[1]);
-        //        final int size = Integer.parseInt(args[2]);
-        //         final LTMemory ltMem = new LTMemory(2 * count * count * allocRate, 2 * count * count * allocRate);
-//         RealtimeThread rt1 = new RealtimeThread() {
-                
-//                 public void run() {
-//                     Runnable logic = new MemAllocatorLogic(count, allocRate, "LTAllTime");
-//                     ltMem.enter(logic);
-//                 }
-//             };
-//         rt1.start();
-//         rt1.join();
-        
-//         final VTMemory vtMem = new VTMemory(2 * count * count * allocRate, 2 * count * count * allocRate);
-//         RealtimeThread rt2 = new RealtimeThread() {
+        final int allocSize = Integer.parseInt(args[1]);
+        final int memType = Integer.parseInt(args[2]);
 
-//                 public void run() {
-//                     Runnable logic = new MemAllocatorLogic(count, allocRate, "VTAllTime");
-//                     vtMem.enter(logic);
-//                 }
-//             };
-        
-//         rt2.start();
-//         rt2.join();
-        
-        final CTMemoryArea ctMem = new CTMemoryArea(100 * allocRate * count + count * 500000, true);
-        RealtimeThread rt3 = new RealtimeThread() {
+        long memSize = 100 * allocSize * count + count * 500000;
+        final MemoryArea memArea = MemoryAreaFactory.createMemoryArea(memSize, memSize, memType);
 
+        RealtimeThread rt = new RealtimeThread() {
                 public void run() {
                     Runnable logic = new MemAllocatorLogic(count,
-                                                           allocRate,
-                                                           ctMem,
-                                                           "CTAllTime",
-                                                           "Time" + allocRate);
-                    ctMem.enter(logic);
+                                                           allocSize,
+                                                           memArea,
+                                                           "AllocTime",
+                                                           "AllocTime" + allocSize,
+                                                            memType);
+                    memArea.enter(logic);
                 }
             };
-
-        rt3.setSchedulingParameters(new PriorityParameters(90));
-        rt3.start();
+        rt.setSchedulingParameters(new PriorityParameters(90));
+        rt.start();
     }
 }            
     

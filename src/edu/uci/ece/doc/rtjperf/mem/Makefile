@@ -1,5 +1,5 @@
 #
-# $Id: Makefile,v 1.3 2002/02/25 21:28:08 corsaro Exp $
+# $Id: Makefile,v 1.4 2002/03/07 04:44:07 corsaro Exp $
 #
 
 RTJP_CLASSES = ${RTJP_HOME}/classes
@@ -14,7 +14,7 @@ INCLUDE_DIRS = -I$(GCJ_INCLUDE)  -I$(GCJ_SRC_INCLUDE) -I$(BOEHM_SRC_INCLUDE) -I$
 
 # -I$(RTJAVA_HOME)/classes
 all:
-	gcj -static -I$(RTJAVA_HOME)/src -I$(RTJP_HOME)/src $(RTJAVA_HOME)/src/javax/realtime/*.java --main=edu.uci.ece.doc.rtjperf.mem.AllocTimeTest -o $(RTJP_BIN)/allocTimeTest  ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/mem/AllocTimeTest.java  ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/*.java ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/HighResClock.cc $(INCLUDE_DIRS) $(RTJAVA_HOME)/src/librtj/src/*.cc  -lgcj -lgcjgc
+	gcj -static  -I$(RTJAVA_HOME)/src -I$(RTJP_HOME)/src $(RTJAVA_HOME)/src/javax/realtime/*.java --main=edu.uci.ece.doc.rtjperf.mem.AllocTimeTest -o $(RTJP_BIN)/allocTimeTest  ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/mem/MemoryAreaFactory.java ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/mem/AllocTimeTest.java  ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/*.java ${RTJP_SRC}/edu/uci/ece/doc/rtjperf/sys/HighResClock.cc $(INCLUDE_DIRS) $(RTJAVA_HOME)/src/librtj/src/*.cc  -lgcj -lgcjgc
 
 #$(RTJAVA_HOME)/src/librtj/src/malloc.o
 

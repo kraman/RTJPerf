@@ -1,5 +1,5 @@
 /*-------------------------------------------------------------------------*
- * $Id: RTJPerfArgs.java,v 1.1 2002/01/14 18:44:45 corsaro Exp $
+ * $Id: RTJPerfArgs.java,v 1.2 2002/03/07 04:44:07 corsaro Exp $
  *-------------------------------------------------------------------------*/
 package edu.uci.ece.doc.rtjperf.util;
 
@@ -46,6 +46,12 @@ public class RTJPerfArgs {
     public static int  BACKGROUND_THREAD_PRIORITY_OPT_CODE = 0x0400;
 
     public static String BACKGROUND_THREAD_TYPE_OPT = "--backgroundThreadType";
-    public static int  BACKGROUND_THREAD_TYPE_OPT_CODE = 0x0600;
+    public static int  BACKGROUND_THREAD_TYPE_OPT_CODE = 0x0800;
 
+    public static String LP_ASYNC_HANDLER_NUMBER_OPT = "--lpAsyncHandlerNumber";
+    public static int LP_ASYNC_HANDLER_NUMBER_OPT_CODE =  0x1000;
+
+    public static String LP_ASYNC_HANDLER_PRIORITY_OPT = "--lpAsyncHandlerPriority";
+    public static int  LP_ASYNC_HANDLER_PRIORITY_OPT_CODE =  0x2000;
+    
 }
