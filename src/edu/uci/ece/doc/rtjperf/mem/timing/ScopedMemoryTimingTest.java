@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: ScopedMemoryTimingTest.java,v 1.5 2002/12/07 03:15:33 corsaro Exp $
+//    $Id: ScopedMemoryTimingTest.java,v 1.6 2002/12/07 03:33:38 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -28,6 +28,7 @@ import javax.realtime.MemoryArea;
 import javax.realtime.RealtimeThread;
 import javax.realtime.PriorityParameters;
 import javax.realtime.ImmortalMemory;
+import javax.realtime.CTMemory;
 
 // -- jTools Import --
 import edu.uci.ece.ac.time.HighResTimer;
