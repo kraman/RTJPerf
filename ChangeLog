@@ -1,3 +1,22 @@
+Thu Mar  7 19:44:43 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/timer/PeriodicTimerTest.java:
+
+	  PeriodicTimer test.
+
+Thu Mar  7 19:37:56 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/timer/build.xml: 
+	* src/edu/uci/ece/doc/rtjperf/timer/TimeoutHandler.java: 
+	* src/edu/uci/ece/doc/rtjperf/timer/OneShotTimerTest.java:
+
+	  OneShotTimer test code and ANT build file.
+
+Thu Mar  7 18:26:21 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/synch/MonitorTest.java: Test that
+	  measures the time taken to enter and exit a java monitor.
+
 Mon Feb 25 13:24:21 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/mem/plain/AllocTimeTest.cc:
