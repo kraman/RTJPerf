@@ -1,3 +1,19 @@
+Mon Jan 14 18:58:28 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/loading/Type.java: 
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeA.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeB.java:
+	* src/edu/uci/ece/doc/rtjperf/loading/TypeC.java: 	
+	* src/edu/uci/ece/doc/rtjperf/loading/EagerClassLoadingTest.java:
+
+	  Test that checks for the eager class loading behaviour.
+
+Mon Jan 14 15:30:07 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
+
+	* src/edu/uci/ece/doc/rtjperf/sys/Makefile: Set by default the use
+	  of gcj3. It seems that gcj v2.96 is missing some methods
+	  implementations in some of the java.lang package classes
+
 Mon Jan 14 10:47:11 2002  Angelo Corsaro  <corsaro@doc.ece.uci.edu>
 
 	* src/edu/uci/ece/doc/rtjperf/util/Spinner.java:
