@@ -1,25 +1,29 @@
 #!/bin/bash
 export JRATE_IMMORTAL_MEMORY_SIZE=10000000
 COUNT=300
-MEM_TYPE="CTMemory"
+TARGET=$1
+
+declare -a MEM_TYPE
+MEM_TYPE=("CTMemory" "LTMemory" "VTMemory")
+
 OUT_DIR="SMTiming"
 
+MAX_MEM_SIZE=1048576
 
-echo "Running CTMemory Tests"
-for size in  4096 8192 16384 32768 65536 131072 262144 524288 1048576; do
-    $1 --count $COUNT --scopedMemoryType $MEM_TYPE --memSize $size --outDir $OUT_DIR
-done
+I=0
 
-MEM_TYPE=LTMemory
-echo "Running LTMemory Tests"
-for size in 4096 8192 16384 32768 65536 131072 262144 524288 1048576; do
-    $1 --count $COUNT --scopedMemoryType $MEM_TYPE --memSize $size --outDir $OUT_DIR
-done
+while [ $I -lt 3 ];
+do
+    let MEM_SIZE=4096
+    echo Running ${MEM_TYPE[$I]} Tests
+    while [ $MEM_SIZE -le $MAX_MEM_SIZE ];
+    do
+        $TARGET --count $COUNT --scopedMemoryType ${MEM_TYPE[$I]} --memSize $MEM_SIZE\
+         --outDir $OUT_DIR
+         let MEM_SIZE=2*MEM_SIZE
+    done
 
-MEM_TYPE=VTMemory
-echo "Running VTMemory Tests"
-for size in 4096 8192 16384 32768 65536 131072 262144 524288 1048576; do
-    $1 --count $COUNT --scopedMemoryType $MEM_TYPE --memSize $size --outDir $OUT_DIR
+    let I=I+1
 done
 
 echo "Done..."
