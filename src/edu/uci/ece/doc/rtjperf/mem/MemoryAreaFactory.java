@@ -1,5 +1,5 @@
 // ************************************************************************
-//    $Id: MemoryAreaFactory.java,v 1.4 2002/10/16 19:19:26 corsaro Exp $
+//    $Id: MemoryAreaFactory.java,v 1.5 2002/12/05 22:22:16 corsaro Exp $
 // ************************************************************************
 //
 //                               RTJPerf
@@ -28,6 +28,8 @@ import javax.realtime.LTMemory;
 import javax.realtime.VTMemory;
 import javax.realtime.CTMemory;
 
+import edu.uci.ece.ac.time.HighResTimer;
+
 public class MemoryAreaFactory {
 
     public static final int CT = 0;
@@ -46,4 +48,28 @@ public class MemoryAreaFactory {
             return null;
         }
     }
+
+    public static MemoryArea createMemoryArea(long minSize, long maxSize, int type, HighResTimer timer) {
+        MemoryArea ma = null;
+        switch (type) {
+        case CT:
+            timer.start();
+            ma = new CTMemory(minSize, maxSize);
+            timer.stop();
+            return ma;
+        case LT:
+            timer.start();
+            ma = new LTMemory(minSize, maxSize);
+            timer.stop();
+            return ma;
+        case VT:
+            timer.start();
+            ma = new VTMemory(minSize, maxSize);
+            timer.stop();
+            return ma;
+        default:
+            return ma;
+        }
+    }
+
 }

@@ -1,4 +1,7 @@
-Thu Dec  5 14:19:50 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+Thu Dec  5 14:21:26 2002  Angelo Corsaro  <corsaro@ece.uci.edu>
+
+	* script/genSMTimingAnalizer.py: Added new function to generate
+	  logplot.
 
 	* src/edu/uci/ece/doc/rtjperf/mem/MemoryAreaFactory.java
 	  (createMemoryArea): Added a new method that takes as an

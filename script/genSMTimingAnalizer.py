@@ -26,6 +26,13 @@ def genPlotCode(matrix, octaveScript):
     octaveScript.write('\tplot(%s(i, 5:(size(%s)(2))));\n' % (matrix, matrix))
     octaveScript.write('\thold on\n')
     octaveScript.write('endfor\n');
+
+def genLogPlotCode(matrix, octaveScript):
+    
+    octaveScript.write('for i = 1:size(%s)(1)\n' % ( matrix))
+    octaveScript.write('\tsemilogy(%s(i, 5:(size(%s)(2))));\n' % (matrix, matrix))
+    octaveScript.write('\thold on\n')
+    octaveScript.write('endfor\n');
             
 
 def genReadKey(msg, octaveScript):
@@ -46,15 +53,15 @@ def genCTTimingAnalizer():
     octaveScript.write('\nhold on \n\n')
 
     octaveScript.write('printf(\"Plotting CTMemory Enter Time\\n\")\n\n')
-    genPlotCode('EnterTime0', octaveScript)
+    genLogPlotCode('EnterTime0', octaveScript)
     genReadKey("Press a key to see CTMEmory Exit Time", octaveScript)
-    genPlotCode('ExitTime0', octaveScript) 
+    genLogPlotCode('ExitTime0', octaveScript) 
 
 
     genReadKey("Press a key to see LT Enter Time", octaveScript)
-    genPlotCode('EnterTime1', octaveScript)
+    genLogPlotCode('EnterTime1', octaveScript)
     genReadKey("Press a key to see LT Exit Time", octaveScript)            
-    genPlotCode('ExitTime1', octaveScript)
+    genLogPlotCode('ExitTime1', octaveScript)
 
     octaveScript.write('\nhold off \n\n')
     genReadKey("Press a key to continue...", octaveScript)
@@ -66,9 +73,9 @@ def genCTTimingAnalizer():
     octaveScript.write('\nhold off \n\n')
     genReadKey("Press a key to continue...", octaveScript)
     octaveScript.write('printf(\"Plotting Execution Times\\n\")\n\n')
-    genPlotCode('ExecTime0', octaveScript)
+    genLogPlotCode('ExecTime0', octaveScript)
     genReadKey("...", octaveScript)
-    genPlotCode('ExecTime1', octaveScript)
+    genLogPlotCode('ExecTime1', octaveScript)
 
     genReadKey("Press a key to exit...", octaveScript)            
     
